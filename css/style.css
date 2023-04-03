@@ -1,0 +1,54 @@
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #b85c5c; 
+    border-radius: 30px;
+    line-height: 2rem;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+    font-family: 'Alkatra', cursive;
+  }
+
+
+  
+  .btn:hover {
+    background-color: #b85c5c; 
+    color: #666;
+  }
+  
+  .btn:focus {
+    outline: none;
+    box-shadow: 0px 0px 4px #666;
+  }
+  
+  .btn:active {
+    transform: scale(0.95);
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+
+  header h1 {
+    font-size: 4rem;
+    font-family: 'Alkatra', cursive;
+  }
+
+  
+
+  
+
+  
