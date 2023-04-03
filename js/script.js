@@ -4,3 +4,5 @@ window.onload = () => {
         transtion_element.classList.remove('is-active');
     }, 500); // millisecondes
 }
+
+
