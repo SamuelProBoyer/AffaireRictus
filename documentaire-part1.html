@@ -35,9 +35,26 @@
   </head>
   <style>
     .bloc-content {
-      background-color: #12151c67;
+      background-color: #22222269;
       padding: 2rem 0;
     }
+     
+    @keyframes appear {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    span {
+      animation-name: appear;
+      animation-duration: 2s;
+      animation-timing-function: ease-in;
+    }
+
+
   </style>
 
   <body>
@@ -53,7 +70,7 @@
             loop
            
           >
-            <source src="/video/test.mp4" type="video/webm" />
+            <source src="/video/Scene1.mp4" type="video/webm" />
             Oops your browser does not support the video tag.
           </video>
           <header class="text-center">

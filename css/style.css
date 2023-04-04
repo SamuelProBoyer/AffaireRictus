@@ -55,14 +55,29 @@ i:last-of-type {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: white;
+  color: #fff;
   margin: 3rem 0;
   height: 100%;
   font-family: 'Satisfy', cursive;
-  background-image: url("../img/blobanimation.svg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+  background-color: #22222271;
+  /* background-image: url("../img/blobanimation.svg"); */
+  /* background-position: center; */
+  /* background-size: contain; */
+  /* background-repeat: no-repeat; */
+}
+.btn-start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 2rem;
+  height: 100%;
+  font-family: 'Satisfy', cursive;
+  /* background-image: url("../img/blobanimation.svg"); */
+  /* background-position: center; */
+  /* background-size: contain; */
+  /* background-repeat: no-repeat; */
 }
 
 
@@ -85,6 +100,25 @@ i:last-of-type {
 .btn:focus {
   border: none;
 }
+.btn-start i {
+  font-size: 1.5rem;
+  font-style: normal;
+}
+
+.btn-start:hover {
+  color: white;
+
+}
+
+.btn-start:hover i {
+  animation-name: jump;
+  animation-duration: 0.5s;
+  animation-delay: calc(var(--i) * 0.075s);
+}
+
+.btn-start:focus {
+  border: none;
+}
 
 
 
@@ -105,6 +139,7 @@ video {
   height: 100%;
   width: 100%;
   z-index: -9999;
+  /* opacity: 25%; */
 }
 .video-wrapper {
   width: 100%;

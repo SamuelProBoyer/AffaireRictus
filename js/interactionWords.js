@@ -18,28 +18,30 @@ function writer() {
       majorText.innerHTML += " ";
     }
 
-    if (char === "i" && phrase.slice(i, i + interaction.length) === interaction) {
-      i += interaction.length;
+    if (phrase.slice(i - 1, i + interaction.length - 1) === interaction) {
+      const word = document.createElement("span");
+      word.id = "word";
+      word.innerHTML = interaction;
+      
+      majorText.appendChild(word);
+      word.style.cursor = "pointer";
+      i += interaction.length - 1;
     } else {
       majorText.innerHTML += char;
     }
   } else {
     clearInterval(interval1Id);
-
-    const word = document.createElement("span");
-    word.id = "word";
-    word.innerHTML = interaction;
-    majorText.appendChild(word);
-
-    word.addEventListener("click", function () {
-      console.log("Clicked on the word!");
-      if (typingText.style.display === "none") {
-        typingText.style.display = "block";
-        word.style.color = "red";
-        word.style.fontWeight = "bold";
-      }
-    });
   }
+  const wordElement = document.getElementById("word");
+  wordElement.addEventListener("click", function () {
+    console.log("Clicked on the word!");
+    if (typingText.style.display === "none") {
+      typingText.style.display = "block";
+      wordElement.style.color = "red";
+      wordElement.style.fontWeight = "bold";
+      
+    }
+  });
 }
 
 function typeWriter() {
