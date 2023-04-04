@@ -7,22 +7,47 @@ body {
 	/* height: 100vh; */
 }
 
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+	}
+	50% {
+    background-position: 100% 50%;
+	}
+	100% {
+    background-position: 0% 50%;
+	}
+}
 .col-btn {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 350px;
+}
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+h2,p {
+  color: #fff;
+}
+
+h2 {
+  font-family: 'Satisfy', cursive;
+  margin: 3rem 0 ;
+}
+
+p{
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+
+i:last-of-type {
+  margin-left: 10px;
 }
 
 .btn {
@@ -32,9 +57,14 @@ body {
   text-decoration: none;
   color: white;
   margin: auto;
- 
+  height: 100%;
   font-family: 'Satisfy', cursive;
+  background-image: url("../img/blobanimation.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
+
 
 .btn i {
   font-size: 1.5rem;
@@ -87,8 +117,21 @@ video {
   justify-content: center;
 }
 
+#container {
+  height: fit-content;
+}
+
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+i:last-of-type {
+  margin-left: 10px;
+}
+
  canvas {
-        width: 100%;
+        width: 250px;
         height: 50px;
         background-color: transparent;
         margin: 2rem 0;
@@ -107,7 +150,7 @@ video {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 400px;
+    min-height: 300px;
   }
 
   header h1 {
@@ -119,6 +162,8 @@ video {
   footer span {
     color: #fff;
   }
+
+  
 
 
   

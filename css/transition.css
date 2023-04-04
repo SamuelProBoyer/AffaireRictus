@@ -12,6 +12,7 @@
 }
 
 .transition-1.is-active {
+    transition: 1s ease-in;
     opacity: 1;
     pointer-events: all;
 

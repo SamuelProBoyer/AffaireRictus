@@ -1,5 +1,5 @@
 
-const delay = 5000; // delai avant le debut de laudio
+const delay = 600; // delai avant le debut de laudio
 
 
 const audio = document.querySelector('audio'); 
