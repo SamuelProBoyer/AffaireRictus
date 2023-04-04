@@ -1,5 +1,5 @@
 
-const delay = 1000; // delai avant le debut de laudio
+const delay = 5000; // delai avant le debut de laudio
 
 
 const audio = document.querySelector('audio'); 
@@ -20,7 +20,7 @@ const canvasWidth = canvas.width;
 const canvasHeight = canvas.height;
 
 // Le nombre de barre a dessiner
-const numBars = 50;
+const numBars = 500;
 
 // Aide chatGPT
 const frequencyData = new Uint8Array(numBars);

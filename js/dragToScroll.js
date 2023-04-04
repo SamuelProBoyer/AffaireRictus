@@ -16,7 +16,7 @@ document.addEventListener('mousemove', (e) => {
   if (!isDown) return;
   e.preventDefault();
   const x = e.pageX;
-  const walkX = (x - startX) * 1; // vitesse du scrolling pas trop toucher ca bug sinon
+  const walkX = (x - startX) * 1.5; // vitesse du scrolling pas trop toucher ca bug sinon
   document.documentElement.scrollLeft = scrollLeft - walkX;
 });
 
