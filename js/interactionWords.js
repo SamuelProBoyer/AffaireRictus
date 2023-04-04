@@ -1,64 +1,57 @@
 const majorText = document.getElementById("phraseDebut");
-const phrase = "Clique sur le mot il va changer";
+const phrase = "Clique sur le mot 'interaction' pour voir le texte caché.";
 
 const typingText = document.getElementById("typing-text");
-const phraseDetails = "Cette phrase ajoute de l'expliquation";
+const phraseDetails = "Voici le texte caché que tu as demandé.";
 
-const interaction = "interaction ";
+const interaction = "interaction";
 
 let i = 0;
 let j = 0;
-let k = 0;
 
-function Writer() {
+function writer() {
   if (i < phrase.length) {
     const char = phrase.charAt(i);
-    majorText.innerHTML += char;
     i++;
 
-    if (char === " " || i === phrase.length) {
+    if (char === " ") {
       majorText.innerHTML += " ";
     }
-    // Si l'index de phrase arrive à "il", ajoute une balise span et ajoute le mot interaction à l'intérieur
-    if (phrase.indexOf("il") !== -1 && i === phrase.indexOf("il")) {
-      const word = document.createElement("span");
-      word.id = "word";
-      word.innerHTML = interaction;
-    //   if (k < interaction.length) {
-    //     const char = interaction.charAt(k);
-    //     word.innerHTML += char;
-    //     k++;
-    //   }
-      majorText.innerHTML = phrase.slice(0, phrase.indexOf("il"));
-      majorText.appendChild(word);
+
+    if (char === "i" && phrase.slice(i, i + interaction.length) === interaction) {
+      i += interaction.length;
+    } else {
+      majorText.innerHTML += char;
     }
-}
-else {
+  } else {
     clearInterval(interval1Id);
-}
-const word = document.getElementById("word");
-// Si le mot avec le id word et cliqué, change le display du texte caché
-word.addEventListener("click", function () {
-  if (typingText.style.display === "none") {
-    typingText.style.display = "block";
+
+    const word = document.createElement("span");
+    word.id = "word";
+    word.innerHTML = interaction;
+    majorText.appendChild(word);
+
+    word.addEventListener("click", function () {
+      console.log("Clicked on the word!");
+      if (typingText.style.display === "none") {
+        typingText.style.display = "block";
+        word.style.color = "red";
+        word.style.fontWeight = "bold";
+      }
+    });
   }
-  word.style.color = "red";
-  word.style.fontWeight = "bold";
-});
 }
 
 function typeWriter() {
-    // Si le display est en block, écrit le texte
   if (typingText.style.display === "block") {
     if (j < phraseDetails.length) {
       typingText.innerHTML += phraseDetails.charAt(j);
       j++;
     } else {
-        // Sinon clear l'interval
       clearInterval(intervalId);
     }
   }
 }
 
-const interval1Id = setInterval(Writer, 100);
+const interval1Id = setInterval(writer, 100);
 const intervalId = setInterval(typeWriter, 100);

@@ -37,7 +37,7 @@ h2,p {
 
 h2 {
   font-family: 'Satisfy', cursive;
-  margin: 3rem 0 ;
+  margin: 2rem 0 ;
 }
 
 p{
@@ -56,7 +56,7 @@ i:last-of-type {
   justify-content: center;
   text-decoration: none;
   color: white;
-  margin: auto;
+  margin: 3rem 0;
   height: 100%;
   font-family: 'Satisfy', cursive;
   background-image: url("../img/blobanimation.svg");
@@ -150,7 +150,7 @@ i:last-of-type {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 300px;
+    min-height: 200px;
   }
 
   header h1 {
