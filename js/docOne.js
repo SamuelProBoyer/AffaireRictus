@@ -1,10 +1,15 @@
 const majorText = document.getElementById("phraseDebut");
-const phrase = "Clique sur le mot 'interaction' pour voir le texte caché.";
+const phrase = "Bienvenue dans l'affaire Rictus. Dans ce documentaire interactif, vous allez acquérir de nouvelles connaissances sur le sujet et vous devrez affronter des épreuves et des énigmes en utilisant ce que vous avez appris. Il est important de mentionner que certains mots identifiés peuvent avoir des explications supplémentaires si vous êtes intéressé. Par exemple, le mot 'bienvenue' est identifié. Touchez-le pour continuer";
+
 
 const typingText = document.getElementById("typing-text");
-const phraseDetails = "Voici le texte caché que tu as demandé.";
+const phraseDetails = "Voici le texte caché que tu as demandé 'autre Mot'.";
 
-const interaction = "interaction";
+const interaction = "bienvenue";
+const interaction2 = "autre Mot";
+
+
+const video = document.getElementById("background");
 
 const wordToClick = ["interaction", "Samuel", "Test"];
 
@@ -15,66 +20,44 @@ let phraseEnCours = "";
 function writer() {
   let debut = phrase.indexOf(interaction);
 
-  let fin = debut + interaction.length;
+  let fin = debut + interaction.length;
 
+  if (i < phrase.length) {
+    const char = phrase.charAt(i);
 
+    i++;
 
+    if (i == debut) {
+      phraseEnCours += '<span id="word">';
+    }
 
-  if (i < phrase.length) {
+    phraseEnCours += char;
 
-   
+    if (i < fin) {
+      majorText.innerHTML = phraseEnCours + "</span>";
+    } else {
+      let c = phraseEnCours.replace(interaction, "bienvenue</span>");
 
-    const char = phrase.charAt(i);
-
-    i++;
-
-   if(i == debut)
-
-   {
-
-    phraseEnCours += '<span id="word">';
-
-   }
-
-
-
-
-    phraseEnCours += char;
-
-
-
-
-    if(i<fin)  
-
-      {
-
-        majorText.innerHTML = phraseEnCours + "</span>";
-
-      }
-
-      else
-
-      {
-
-       let c =  phraseEnCours.replace(interaction,"interaction</span>");
-
-       majorText.innerHTML = c;
-
-      }
+      majorText.innerHTML = c;
+    }
   } else {
     clearInterval(interval1Id);
   }
   const wordElement = document.getElementById("word");
   wordElement.addEventListener("click", function () {
-    console.log("Clicked on the word!");
+    console.log("Mot cliquer !");
+    // video.src = "../video/Scene2-question1.mp4"; // Changement de video lors du clique
+    majorText.style.display === "none";
     if (typingText.style.display === "none") {
       typingText.style.display = "block";
       wordElement.style.color = "red";
       wordElement.style.fontWeight = "bold";
-      
     }
   });
+
 }
+
+
 
 function typeWriter() {
   if (typingText.style.display === "block") {

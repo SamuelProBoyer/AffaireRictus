@@ -1,34 +1,20 @@
-
-
-body {
-	background: linear-gradient(-45deg, #1b222c, #12151c, #661b1c, #531516);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	/* height: 100vh; */
-}
-
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-	}
-	50% {
-    background-position: 100% 50%;
-	}
-	100% {
-    background-position: 0% 50%;
-	}
-}
+.bloc-content {
+      background-color: #22222269;
+      padding: 2rem 0;
+      text-align: center;
+      padding: 1% 30%;
+      max-width: 2000px;
+      margin: 0 auto;
+    }
 .col-btn {
   display: flex;
-  flex-direction: column;
   justify-content: center;
 }
 footer {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  height: 350px;
+  height: 275px;
 }
 
 h2,p {
@@ -46,9 +32,9 @@ p{
   margin: 2rem 0;
 }
 
-i:last-of-type {
+/* i:last-of-type {
   margin-left: 10px;
-}
+} */
 
 .btn {
   display: flex;
@@ -65,22 +51,6 @@ i:last-of-type {
   /* background-size: contain; */
   /* background-repeat: no-repeat; */
 }
-.btn-start {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: #fff;
-  font-size: 2rem;
-  height: 100%;
-  font-family: 'Satisfy', cursive;
-  /* background-image: url("../img/blobanimation.svg"); */
-  /* background-position: center; */
-  /* background-size: contain; */
-  /* background-repeat: no-repeat; */
-}
-
-
 .btn i {
   font-size: 1.5rem;
   font-style: normal;
@@ -99,6 +69,23 @@ i:last-of-type {
 
 .btn:focus {
   border: none;
+}
+
+.btn-start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  margin: 3rem 0;
+  height: 100%;
+  font-family: 'Satisfy', cursive;
+  background-color: #22222271;
+  border: none;
+  /* background-image: url("../img/blobanimation.svg"); */
+  /* background-position: center; */
+  /* background-size: contain; */
+  /* background-repeat: no-repeat; */
 }
 .btn-start i {
   font-size: 1.5rem;
@@ -119,6 +106,10 @@ i:last-of-type {
 .btn-start:focus {
   border: none;
 }
+
+
+
+
 
 
 
@@ -161,9 +152,9 @@ body {
   overflow-x: hidden;
 }
 
-i:last-of-type {
+/* i:last-of-type {
   margin-left: 10px;
-}
+} */
 
  canvas {
         width: 250px;
@@ -185,7 +176,7 @@ i:last-of-type {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 200px;
+    min-height: 158px;
   }
 
   header h1 {

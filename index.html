@@ -35,17 +35,49 @@
 
   <style>
     header {
-      height: 450px;
+      height: 500px;
     }
+
+
+    
+
+   /* @keyframes appear {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: .5;
+      }
+      100% {
+        opacity: .5;
+      }
+    }
+
+    .btn-start {
+      animation-name: appear;
+      animation-duration: 10s;
+      animation-timing-function: ease-out; 
+     } */
+
+     .btn-start {
+      margin-top: 93px;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+     }
+
+   
+    
   </style>
 
   <body>
     <div class="transition transition-1 is-active"></div>
 
     <div class="page">
-      <header class="text-center">
-        <h1>L'affaire Rictus</h1>
-      </header>
+      <video id="background" playsinline autoplay muted loop>
+        <source src="/video/Scene1-A.mp4" type="video/webm" />
+        Oops your browser does not support the video tag.
+      </video>
+      <header class="text-center"></header>
 
       <main id="swup" class="transition-fade">
         <div class="container btn-container">
@@ -63,6 +95,7 @@
                 <i style="--i: 9">r</i>
                 <i style="--i: 10"></i>
               </a>
+              
             </div>
           </div>
         </div>
@@ -72,9 +105,11 @@
         <span>Technique d'intégrations multimédias 2023&copy;</span>
       </footer>
     </div>
-
-
-
+    <script>
+      setTimeout(function() {
+        document.querySelector('.btn-start').style.opacity = 1;
+      }, 10000);
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
