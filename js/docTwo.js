@@ -1,34 +1,64 @@
 const majorText = document.getElementById("phraseDebut");
-const phrase = "Clique sur le mot 'interaction' pour voir le texte caché.";
+const phrase = "Clique sur le mot 'Samuel' pour voir le texte caché.";
 
 const typingText = document.getElementById("typing-text");
 const phraseDetails = "Voici le texte caché que tu as demandé.";
 
-const interaction = "interaction";
+const interaction = "Samuel";
 
 let i = 0;
 let j = 0;
+let phraseEnCours = "";
 
 function writer() {
-  if (i < phrase.length) {
-    const char = phrase.charAt(i);
-    i++;
+  let debut = phrase.indexOf(interaction);
 
-    if (char === " ") {
-      majorText.innerHTML += " ";
-    }
+  let fin = debut + interaction.length;
 
-    if (phrase.slice(i - 1, i + interaction.length - 1) === interaction) {
-      const word = document.createElement("span");
-      word.id = "word";
-      word.innerHTML = interaction;
-      
-      majorText.appendChild(word);
-      word.style.cursor = "pointer";
-      i += interaction.length - 1;
-    } else {
-      majorText.innerHTML += char;
-    }
+
+
+
+  if (i < phrase.length) {
+
+   
+
+    const char = phrase.charAt(i);
+
+    i++;
+
+   if(i == debut)
+
+   {
+
+    phraseEnCours += '<span id="word">';
+
+   }
+
+
+
+
+    phraseEnCours += char;
+
+
+
+
+    if(i<fin)  
+
+      {
+
+        majorText.innerHTML = phraseEnCours + "</span>";
+
+      }
+
+      else
+
+      {
+
+       let c =  phraseEnCours.replace(interaction,"Samuel</span>");
+
+       majorText.innerHTML = c;
+
+      }
   } else {
     clearInterval(interval1Id);
   }
