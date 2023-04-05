@@ -1,17 +1,32 @@
-
-
-@keyframes flash {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
 #word {
-    animation: flash .2s infinite;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+#word:hover{
+  color: pink;
+}
+
+#word::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+  height: 2px;
+  background-color: pink;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+#word:hover::after {
+  transform: scaleX(1);
+}
+
+#word.stop-animation::after {
+  transition: none;
+  width: 100%;
+  transform: scaleX(1);
 }

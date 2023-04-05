@@ -11,57 +11,32 @@ let j = 0;
 let phraseEnCours = "";
 
 function writer() {
-  let debut = phrase.indexOf(interaction);
+  let debut = phrase.indexOf(interaction); 
+  let fin = debut + interaction.length;
 
-  let fin = debut + interaction.length;
+  if (i < phrase.length) {
+   
+    const char = phrase.charAt(i);
+    i++;
+   if(i == debut)
+   {
+    phraseEnCours += '<span id="word">';
+   }
 
+    phraseEnCours += char;
 
-
-
-  if (i < phrase.length) {
-
-   
-
-    const char = phrase.charAt(i);
-
-    i++;
-
-   if(i == debut)
-
-   {
-
-    phraseEnCours += '<span id="word">';
-
-   }
-
-
-
-
-    phraseEnCours += char;
-
-
-
-
-    if(i<fin)  
-
-      {
-
-        majorText.innerHTML = phraseEnCours + "</span>";
-
-      }
-
-      else
-
-      {
-
-       let c =  phraseEnCours.replace(interaction,"Samuel</span>");
-
-       majorText.innerHTML = c;
-
-      }
-  } else {
-    clearInterval(interval1Id);
-  }
+    if(i<fin)  
+      {
+        majorText.innerHTML = phraseEnCours + "</span>";
+      }
+      else
+      {
+       let c =  phraseEnCours.replace(interaction,"interaction</span>");
+       majorText.innerHTML = c;
+      }
+        } else {
+          clearInterval(interval1Id);
+        }
   const wordElement = document.getElementById("word");
   wordElement.addEventListener("click", function () {
     console.log("Clicked on the word!");
