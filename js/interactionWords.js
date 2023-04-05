@@ -8,27 +8,38 @@ const interaction = "interaction";
 
 let i = 0;
 let j = 0;
+let phraseEnCours = "";
 
 function writer() {
+  let debut = phrase.indexOf(interaction); 
+  let fin = debut + interaction.length;
+
   if (i < phrase.length) {
+   
     const char = phrase.charAt(i);
     i++;
+   if(i == debut)
+   {
+    phraseEnCours += '<span id="word">';
+   }
 
-    if (char === " ") {
-      majorText.innerHTML += " ";
-    }
+    phraseEnCours += char;
 
-    if (phrase.slice(i - 1, i + interaction.length) === interaction) {
-      word.style.cursor = "pointer";
-      i += interaction.length - 1;
-    } else {
-      majorText.innerHTML += char;
-    }
-  } else {
-    clearInterval(interval1Id);
-  }
+    if(i<fin)  
+      {
+        majorText.innerHTML = phraseEnCours + "</span>";
+      }
+      else
+      {
+       let c =  phraseEnCours.replace(interaction,"interaction</span>");
+       majorText.innerHTML = c;
+      }
+        } else {
+          clearInterval(interval1Id);
+        }
+        
   const word = document.createElement("span");
-  word.append(' ');
+  word.style.cursor = "pointer";
   word.id = "word";
 
   majorText.appendChild(word);
