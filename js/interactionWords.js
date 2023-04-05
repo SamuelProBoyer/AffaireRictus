@@ -1,5 +1,5 @@
 const majorText = document.getElementById("phraseDebut");
-const phrase = "Clique sur le mot 'interaction' pour voir le texte caché.";
+const phrase = "Clique sur le mot interaction pour voir le texte caché.";
 
 const typingText = document.getElementById("typing-text");
 const phraseDetails = "Voici le texte caché que tu as demandé.";
@@ -18,12 +18,7 @@ function writer() {
       majorText.innerHTML += " ";
     }
 
-    if (phrase.slice(i - 1, i + interaction.length - 1) === interaction) {
-      const word = document.createElement("span");
-      word.id = "word";
-      word.innerHTML = interaction;
-      
-      majorText.appendChild(word);
+    if (phrase.slice(i - 1, i + interaction.length) === interaction) {
       word.style.cursor = "pointer";
       i += interaction.length - 1;
     } else {
@@ -32,6 +27,11 @@ function writer() {
   } else {
     clearInterval(interval1Id);
   }
+  const word = document.createElement("span");
+  word.append(' ');
+  word.id = "word";
+
+  majorText.appendChild(word);
   const wordElement = document.getElementById("word");
   wordElement.addEventListener("click", function () {
     console.log("Clicked on the word!");
@@ -39,7 +39,7 @@ function writer() {
       typingText.style.display = "block";
       wordElement.style.color = "red";
       wordElement.style.fontWeight = "bold";
-      
+
     }
   });
 }
