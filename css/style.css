@@ -43,7 +43,6 @@ p{
   text-decoration: none;
   color: #fff;
   margin: 3rem 0;
-  height: 100%;
   font-family: 'Satisfy', cursive;
   background-color: #22222271;
   /* background-image: url("../img/blobanimation.svg"); */
@@ -77,15 +76,11 @@ p{
   justify-content: center;
   text-decoration: none;
   color: #fff;
-  margin: 3rem 0;
-  height: 100%;
+  margin-top: 7rem;
   font-family: 'Satisfy', cursive;
   background-color: #22222271;
   border: none;
-  /* background-image: url("../img/blobanimation.svg"); */
-  /* background-position: center; */
-  /* background-size: contain; */
-  /* background-repeat: no-repeat; */
+  padding: 1rem;
 }
 .btn-start i {
   font-size: 1.5rem;

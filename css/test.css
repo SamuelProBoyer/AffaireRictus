@@ -10,7 +10,7 @@ body {
   overflow: hidden;
 }
 
-#background {
+/* #background {
   position: absolute;
   top: 0;
   left: 0;
@@ -20,7 +20,7 @@ body {
   background-size: cover;
   background-position: center;
   z-index: -1;
-}
+} */
 
 #background.zoom {
   transform: scale(1.1);

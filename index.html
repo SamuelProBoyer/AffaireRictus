@@ -27,7 +27,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/test.css" />
     <link rel="stylesheet" href="/css/transition.css" />
     <script src="js/script.js"></script>
     <title>L'affaire Rictus</title>
@@ -38,32 +37,13 @@
       height: 500px;
     }
 
-
-    
-
-   /* @keyframes appear {
-      0% {
-        opacity: 0;
-      }
-      50% {
-        opacity: .5;
-      }
-      100% {
-        opacity: .5;
-      }
-    }
-
-    .btn-start {
-      animation-name: appear;
-      animation-duration: 10s;
-      animation-timing-function: ease-out; 
-     } */
-
      .btn-start {
       margin-top: 93px;
       opacity: 0;
       transition: opacity 2s ease-in-out;
      }
+
+     
 
    
     
@@ -73,8 +53,8 @@
     <div class="transition transition-1 is-active"></div>
 
     <div class="page">
-      <video id="background" playsinline autoplay muted loop>
-        <source src="/video/Scene1-A.mp4" type="video/webm" />
+      <video id="background" playsinline autoplay muted>
+        <source src="/video/Intro-A.mp4" type="video/webm" />
         Oops your browser does not support the video tag.
       </video>
       <header class="text-center"></header>
@@ -83,7 +63,7 @@
         <div class="container btn-container">
           <div class="row btn-row">
             <div class="col-md-12">
-              <a class="btn-start" href="/documentaire-part1.html">
+              <a class="btn-start">
                 <i style="--i: 1">C</i>
                 <i style="--i: 2">o</i>
                 <i style="--i: 3">m</i>
@@ -95,21 +75,48 @@
                 <i style="--i: 9">r</i>
                 <i style="--i: 10"></i>
               </a>
+              <a class="btn" href="Chapitres/chapitre1.html">
+                <i style="--i: 1">S</i>
+                <i style="--i: 2">u</i>
+                <i style="--i: 3">i</i>
+                <i style="--i: 4">v</i>
+                <i style="--i: 5">a</i>
+                <i style="--i: 6">n</i>
+                <i style="--i: 7">t</i>
+              </a>
               
             </div>
+            <canvas></canvas>
           </div>
         </div>
       </main>
 
+      <audio id="audio" src="/audio/PP_projet3_attente.mp3"></audio>
       <footer class="text-center">
-        <span>Technique d'intégrations multimédias 2023&copy;</span>
+        <span>Technique d'Intégrations multimédia 2023&copy;</span>
       </footer>
     </div>
+
+
+    
     <script>
+      const video = document.getElementById("background");
+      const btn_start = document.querySelector(".btn-start");
+      const btn = document.querySelector(".btn");
+      btn.style.display = "none";
+      btn_start.addEventListener("click" , () => {
+        btn_start.style.display = "none";
+        btn.style.display = "block";
+        video.src = "../video/Intro-B.mp4";
+        console.log("Je suis cliquer !");
+      })
+      
+
       setTimeout(function() {
         document.querySelector('.btn-start').style.opacity = 1;
       }, 10000);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/audioStart.js"></script>
   </body>
 </html>

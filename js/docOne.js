@@ -3,7 +3,7 @@ const phrase = "Bienvenue dans l'affaire Rictus. Dans ce documentaire interactif
 
 
 const typingText = document.getElementById("typing-text");
-const phraseDetails = "Voici le texte caché que tu as demandé 'autre Mot'.";
+const phraseDetails = "Super ! Maintenant que vous êtes prêt, vous pouvez cliquer sur le bouton SUIVANT pour accéder à la première question. ";
 
 const interaction = "bienvenue";
 const interaction2 = "autre Mot";
