@@ -26,10 +26,9 @@
       href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/test.css" />
-    <link rel="stylesheet" href="/css/transition.css" />
-    <script src="js/script.js"></script>
+    <!-- <link rel="stylesheet" href="../css/transition.css" /> -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/script.js"></script>
     <title>L'affaire Rictus</title>
   </head>
 
@@ -69,7 +68,7 @@
         <div class="container btn-container">
           <div class="row btn-row">
             <div class="col-md-12">
-              <a class="btn btn-next">
+              <a class="btn btn-next" href="index.html">
                 <i style="--i: 1">S</i>
                 <i style="--i: 2">u</i>
                 <i style="--i: 3">i</i>
@@ -78,7 +77,7 @@
                 <i style="--i: 6">n</i>
                 <i style="--i: 7">t</i>
               </a>
-              <a class="btn btn-continue" href="index.html">
+              <!-- <a class="btn btn-continue" href="index.html">
                 <i style="--i: 1">C</i>
                 <i style="--i: 2">o</i>
                 <i style="--i: 3">n</i>
@@ -88,7 +87,7 @@
                 <i style="--i: 7">u</i>
                 <i style="--i: 8">e</i>
                 <i style="--i: 9">r</i>
-              </a>
+              </a> -->
               
             </div>
           </div>
@@ -102,33 +101,33 @@
     <script>
       
 
-      const btn_next = document.querySelector(".btn-next");
-      const btn_continue = document.querySelector(".btn-continue");
-      btn_continue.style.display = "none";
-      btn_next.addEventListener("click" , () => {
-        // video.src = "../video/Intro-B.mp4";
-        btn_next.style.display = "none";
-        btn_continue.style.display = "block";
-        typeWriter();
-        console.log("Je suis cliquer !");
-      })
-   
-
+      // const btn_next = document.querySelector(".btn-next");
+      // const btn_continue = document.querySelector(".btn-continue");
+      // btn_continue.style.display = "none";
+      // btn_next.addEventListener("click" , () => {
+      //   // video.src = "../video/Intro-B.mp4";
+      //   btn_next.style.display = "none";
+      //   btn_continue.style.display = "block";
+      //   console.log("Je suis cliquer !");
+      // })
+      
+      
       let string = "La culture contemporaine regorge de personnages arborant un sourire aux lèvres qui semble forcé, voire malsain. En 1981, un personnage nommé Rictus est apparu dans une bande dessinée française. Son sourire permanent et déformé a suscité l'intérêt de notre équipe, nous incitant à en apprendre davantage sur cette expression faciale. Cette contraction musculaire a un nom, et cela s'appelle le rictus, exactement comme le personnage de bande dessinée. Par conséquent, notre équipe a décidé de réaliser un documentaire sur le sujet du rictus. ";
-
+      
       let i = 0;
       
       let phraseDebut = document.getElementById("phraseDebut");
       let typing_text = document.getElementById("typing-text");
-
+      
       function typeWriter() {
         if (i < string.length) {
           phraseDebut.innerHTML += string.charAt(i);
           i++;
-
+          
           setTimeout(typeWriter, 45);
         }
       }
+      typeWriter();
       
 
       setTimeout(function() {

@@ -1,24 +1,48 @@
 
 const video = document.getElementById("background");
 const btn_action = document.querySelectorAll(".btn"); // declaration
-const btn_suivant = document.querySelector(".btn-start");
+const btn_start = document.querySelector(".btn-start");
+const btn_next = document.querySelector(".btn-next");
+const bloc_content = document.querySelector(".bloc-content");
 const audioBtn = new Audio("../audio/btn-laugh.wav");
 console.log(audioBtn);
 
-btn_suivant.style.display = "none";
+// btn_suivant.style.display = "none";
 
-
+bloc_content.style.display = "none";
+btn_next.style.display = "none";
 btn_action.forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
     btn_action.forEach((button) => {
+      bloc_content.style.display = "block";
+      video.src = "../video/Chapitre1-Loop.mp4";
+      setTimeout(function() {
+        document.querySelector('.btn-start').style.opacity = 1;
+      }, 10000);
       button.style.display = "none";
       audioBtn.play();
       
     });
     typeWriter();
-    video.src = "../video/Chapitre1-B.mp4";
   });
+});
+
+btn_start.addEventListener("click" , () => {
+  bloc_content.style.display = "none";
+  btn_start.style.display = "none";
+  btn_next.style.display = "block";
+  video.src = "../video/Chapitre2-A.mp4";
+  setTimeout(function() {
+    document.querySelector('.btn-next').style.opacity = 1;
+    
+  }, 20000);
+  
+});
+
+btn_next.addEventListener("click", () => {
+  video.src = "../video/Chapitre2-Loupe-Identifiez1.mp4";
+  
 });
 
 

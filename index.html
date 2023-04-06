@@ -27,8 +27,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/transition.css" />
-    <script src="js/script.js"></script>
+    <!-- <link rel="stylesheet" href="../css/transition.css" /> -->
+    <script src="/js/script.js"></script>
     <title>L'affaire Rictus</title>
   </head>
 
@@ -41,7 +41,16 @@
       margin-top: 93px;
       opacity: 0;
       transition: opacity 2s ease-in-out;
+      cursor: pointer;
+    }
+    .btn {
+      margin-top: 93px;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      cursor: pointer;
      }
+     
+     
 
      
 
@@ -86,7 +95,7 @@
               </a>
               
             </div>
-            <canvas></canvas>
+            <!-- <canvas></canvas> -->
           </div>
         </div>
       </main>
@@ -98,7 +107,7 @@
     </div>
 
 
-    
+
     <script>
       const video = document.getElementById("background");
       const btn_start = document.querySelector(".btn-start");
@@ -107,7 +116,7 @@
       btn_start.addEventListener("click" , () => {
         btn_start.style.display = "none";
         btn.style.display = "block";
-        video.src = "../video/Intro-B.mp4";
+        video.src = "../video/Scene2-NoFadeOut.mp4";
         console.log("Je suis cliquer !");
       })
       
@@ -115,6 +124,10 @@
       setTimeout(function() {
         document.querySelector('.btn-start').style.opacity = 1;
       }, 10000);
+
+      setTimeout(function() {
+        document.querySelector('.btn').style.opacity = 1;
+      }, 20000);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/audioStart.js"></script>

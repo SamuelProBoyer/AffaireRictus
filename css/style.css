@@ -50,6 +50,7 @@ p{
   /* background-size: contain; */
   /* background-repeat: no-repeat; */
 }
+
 .btn i {
   font-size: 1.5rem;
   font-style: normal;
@@ -70,7 +71,7 @@ p{
   border: none;
 }
 
-.btn-start {
+.btn-start,.btn-next,.btn-toImg {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,13 +82,23 @@ p{
   background-color: #22222271;
   border: none;
   padding: 1rem;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  cursor: pointer;
 }
+
+/* .btn-next {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  cursor: pointer;
+
+} */
 .btn-start i {
   font-size: 1.5rem;
   font-style: normal;
 }
 
-.btn-start:hover {
+.btn-start:hover, .btn-next:hover , .btn-toImg:hover {
   color: white;
 
 }
@@ -171,7 +182,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 158px;
+    min-height: 284px;
   }
 
   header h1 {
