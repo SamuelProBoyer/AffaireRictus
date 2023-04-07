@@ -5,9 +5,8 @@ const phrase = "Bienvenue dans l'affaire Rictus. Dans ce documentaire interactif
 const typingText = document.getElementById("typing-text");
 const phraseDetails = "Super ! Maintenant que vous êtes prêt, vous pouvez cliquer sur le bouton SUIVANT pour accéder à la première question. ";
 
-const interaction = "bienvenue";
+const interaction = "Bienvenue";
 const interaction2 = "autre Mot";
-
 
 const video = document.getElementById("background");
 
@@ -36,7 +35,7 @@ function writer() {
     if (i < fin) {
       majorText.innerHTML = phraseEnCours + "</span>";
     } else {
-      let c = phraseEnCours.replace(interaction, "bienvenue</span>");
+      let c = phraseEnCours.replace(interaction, "Bienvenue</span>");
 
       majorText.innerHTML = c;
     }
