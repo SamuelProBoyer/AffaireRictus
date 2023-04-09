@@ -50,10 +50,10 @@
     background-color: transparent;
     border: none;
     border-radius: 50%;
-    width: 270px;
-    height: 270px;
-    top: 51.1%;
-    left: 58.1%;
+    width: 280px;
+    height: 280px;
+    top: 46.9%;
+    left: 83.5%;
     transform: translate(-50%, -50%);
     transition: background-color 0.3s ease;
   }
@@ -66,14 +66,15 @@
   .red-circle1 {
     position: absolute;
     border-radius: 50%;
-    width: 260px;
+    width: 300px;
+    height: 300px;
     background-color: transparent;
     border: none;
-    height: 260px;
-    top: 49.3%;
-    left: 15.6%;
+    top: 49.1%;
+    left: 14.3%;
     transform: translate(-50%, -50%);
     transition: background-color 0.3s ease;
+
   }
 
   .red-circle1:hover {
@@ -85,19 +86,17 @@
     position: absolute;
     border: none;
     border-radius: 50%;
-    width: 180px;
-    height: 180px;
-    top: 49.4%;
-    left: 38.8%;
+    width: 200px;
+    height: 200px;
+    top: 47.4%;
+    left: 35.5%;
     transform: translate(-50%, -50%);
     background-color: transparent;
     transition: background-color 0.3s ease;
-
   }
 
   .red-circle2:hover {
     background-color: rgba(128, 128, 128, 0.432);
-
     cursor: pointer;
   }
 
@@ -105,16 +104,13 @@
     position: absolute;
     border: none;
     border-radius: 50%;
-    width: 390px;
-
-    height: 390px;
-    top: 48.1%;
-
-    left: 83.5%;
+    width: 400px;
+    height: 400px;
+    top: 47%;
+    left: 59.1%;
     transform: translate(-50%, -50%);
     background-color: transparent;
     transition: background-color 0.3s ease;
-
   }
 
   .red-circle3:hover {
@@ -129,24 +125,26 @@
 
   <div class="page">
     <div class="circle-container">
-      <img id="background" src="/img/Identifiez1-Image.png" alt="Image with characters">
-      <button class="circle green-circle wrong"></button>
+      <img id="background" src="/img/Identifiez2-Image.png" alt="Image with characters">
+      <button class="circle red-circle2 wrong"></button>
+      <button class="circle green-circle correct"></button>
       <button class="circle red-circle1 wrong"></button>
-      <button class="circle red-circle2 correct"></button>
       <button class="circle red-circle3 wrong"></button>
     </div>
 
 
 
     <!-- <main id="swup" class="transition-fade">
-        
+       
             <!-- <canvas></canvas> -->
 
+  </div>
+  <!-- </main> -->
 
-    <!-- </main> -->
-
-    <!-- <audio id="audio" src="/audio/PP_projet3_attente.mp3"></audio> -->
-
+  <!-- <audio id="audio" src="/audio/PP_projet3_attente.mp3"></audio>
+      <footer class="text-center">
+        <span>Technique d'Intégrations multimédia 2023&copy;</span>
+      </footer> -->
   </div>
 
 
@@ -165,7 +163,7 @@
 
         errorSound.play();
         setTimeout(function () {
-          document.location.href = "/pageIMG2.html";
+          document.location.href = "/pageIMG.html";
 
         }, 2000);
       });
@@ -175,13 +173,11 @@
       console.log("Bravo !");
       correctSound.play();
       setTimeout(function () {
-        // document.location.href = "/pageIMG2.html";
+        // document.location.href = "/pageIMG.html";
         document.location.href = "/Chapitres/chapitre3.html";
 
       }, 2000);
     });
-
-
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/audioStart.js"></script>

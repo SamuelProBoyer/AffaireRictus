@@ -44,6 +44,8 @@ function writer() {
     clearInterval(interval1Id);
   }
   const wordElement = document.getElementById("word");
+  const btn_container = document.querySelector(".btn-container");
+  btn_container.style.display = "none";
   wordElement.addEventListener("click", function () {
     console.log("Mot cliquer !");
     // video.src = "../video/Scene2-question1.mp4"; // Changement de video lors du clique

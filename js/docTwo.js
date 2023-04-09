@@ -19,6 +19,7 @@ btn_action.forEach((button) => {
       video.src = "../video/Chapitre1-Loop.mp4";
       setTimeout(function() {
         document.querySelector('.btn-start').style.opacity = 1;
+        btn_start.style.display = "block";
       }, 10000);
       button.style.display = "none";
       audioBtn.play();
@@ -27,7 +28,7 @@ btn_action.forEach((button) => {
     typeWriter();
   });
 });
-
+// btn_start.style.display = "none";
 btn_start.addEventListener("click" , () => {
   bloc_content.style.display = "none";
   btn_start.style.display = "none";
@@ -60,7 +61,7 @@ function typeWriter() {
   }
 
   if(i === string.length) {
-    btn_suivant.style.display = "inline";
+    btn_next.style.display = "inline";
   }
 }
 
