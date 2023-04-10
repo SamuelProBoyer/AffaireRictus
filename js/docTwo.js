@@ -16,7 +16,7 @@ btn_action.forEach((button) => {
     e.preventDefault();
     btn_action.forEach((button) => {
       bloc_content.style.display = "block";
-      video.src = "../video/Chapitre1-Loop.mp4";
+      video.src = "../video/Chapitre1-B.mp4";
       setTimeout(function() {
         document.querySelector('.btn-start').style.opacity = 1;
         btn_start.style.display = "block";

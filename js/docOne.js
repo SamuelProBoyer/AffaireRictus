@@ -8,7 +8,6 @@ const phraseDetails = "Super ! Maintenant que vous êtes prêt, vous pouvez cliq
 const interaction = "bienvenue";
 const interaction2 = "autre Mot";
 
-
 const video = document.getElementById("background");
 
 const wordToClick = ["interaction", "Samuel", "Test"];
@@ -36,7 +35,7 @@ function writer() {
     if (i < fin) {
       majorText.innerHTML = phraseEnCours + "</span>";
     } else {
-      let c = phraseEnCours.replace(interaction, "bienvenue</span>");
+      let c = phraseEnCours.replace(interaction, "Bienvenue</span>");
 
       majorText.innerHTML = c;
     }
