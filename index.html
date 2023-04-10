@@ -93,14 +93,14 @@
                 <i style="--i: 6">n</i>
                 <i style="--i: 7">t</i>
               </a>
-              <canvas></canvas>
+              <!-- <canvas></canvas> -->
               
             </div>
           </div>
         </div>
       </main>
       
-      <audio id="audio" src="audio/PP_projet3_attente.mp3"></audio>
+      <audio loop id="audio" src="audio/PP_projet3_attente.mp3"></audio>
       <footer class="text-center">
         <span>Technique d'Intégrations multimédia 2023&copy;</span>
       </footer>
@@ -110,13 +110,19 @@
 
     <script>
       const video = document.getElementById("background");
+      const audio = document.getElementById("audio");
       const btn_start = document.querySelector(".btn-start");
       const btn = document.querySelector(".btn");
+      audio.volume = 0.1;
+      audio.play();
       btn.style.display = "none";
       btn_start.addEventListener("click" , () => {
         btn_start.style.display = "none";
         btn.style.display = "block";
         video.src = "../video/Scene2-NoFadeOut.mp4";
+        setTimeout(function() {
+        document.querySelector('.btn').style.opacity = 1;
+      }, 5000);
         console.log("Je suis cliquer !");
       })
       
@@ -125,11 +131,9 @@
         document.querySelector('.btn-start').style.opacity = 1;
       }, 10000);
 
-      setTimeout(function() {
-        document.querySelector('.btn').style.opacity = 1;
-      }, 20000);
+      
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/audioStart.js"></script>
+    <!-- <script src="js/audioStart.js"></script> -->
   </body>
 </html>

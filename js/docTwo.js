@@ -37,7 +37,7 @@ btn_start.addEventListener("click" , () => {
   setTimeout(function() {
     document.querySelector('.btn-next').style.opacity = 1;
     
-  }, 20000);
+  }, 30000);
   
 });
 
