@@ -4,7 +4,7 @@ const btn_action = document.querySelectorAll(".btn"); // declaration
 const btn_start = document.querySelector(".btn-start");
 const btn_next = document.querySelector(".btn-next");
 const bloc_content = document.querySelector(".bloc-content");
-const audioBtn = new Audio("../audio/btn-laugh.wav");
+const audioBtn = new Audio("../audio/5DeuxBonnesReponses.wav");
 console.log(audioBtn);
 
 // btn_suivant.style.display = "none";

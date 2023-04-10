@@ -133,6 +133,7 @@
         <footer class="text-center">
           <!-- Temporaire -->
           <audio loop id="audio" src="/audio/PP_projet3_attente.mp3"></audio>
+          <audio id="audioMajeur" src=""></audio>
           <!-- <canvas></canvas> -->
         </footer>
       </div>
@@ -164,6 +165,9 @@
         bloc_content.style.display = "block";
         video.src = "../video/Chapitre2-Loop.mp4";
         typeWriter();
+        const audioMajeur = document.getElementById("audioMajeur");
+        audioMajeur.src = "/audio/8RechercheEquipe.wav";
+        audioMajeur.play();
         setTimeout(function () {
           document.querySelector(".btn-next").style.opacity = 1;
         }, 15000);
@@ -172,6 +176,9 @@
 
       // AFFICHE LE DEUXIEME TEXTE
       btn_next.addEventListener("click", () => {
+        const audioMajeur = document.getElementById("audioMajeur");
+        audioMajeur.src = "/audio/10rictusPasMaladie.wav";
+        audioMajeur.play();
         btn_next.style.display = "none";
         btn_continue.style.display = "block";
         typeWriterSecond();
@@ -191,6 +198,9 @@
         // }, 15000);
         // bloc_content.style.display = "none";
         btn_continue.style.display = "none";
+        const audioMajeur = document.getElementById("audioMajeur");
+        audioMajeur.src = "/audio/11IntroTest.wav";
+        audioMajeur.play();
         typing_text.innerHTML = "";        
         phraseDebut.innerHTML = "";     
         btn_toImg.style.display = "block";
