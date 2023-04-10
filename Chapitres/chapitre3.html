@@ -75,6 +75,7 @@
 
   <script>
     const phraseDebut = document.getElementById("phraseDebut");
+    const btn_start = document.querySelector(".btn-start");
     const typingText = document.getElementById("typing-text");
     let string = "Effectivement, il est bien plus simple de détecter quelle personne est atteinte d’un rictus involontaire, puisque ce type de sourire peut survenir dans n’importe quelle situation et dans certains cas, la personne en question va se démarquer de la foule malgré elle. Grâce à l’affaire Rictus, nous allons pouvoir aider une plus grande partie de la population à comprendre ce problème. "
     const audio = document.getElementById("audio");
@@ -82,8 +83,7 @@
     audio.play();
     setTimeout(function () {
       document.querySelector('.btn-start').style.opacity = 1;
-      document.querySelector('.btn-container').style.display = "block";
-    }, 50000);
+    }, 10000);
 
 
     let i = 0;
@@ -96,6 +96,13 @@
         }
       }
       typeWriter();
+
+      btn_start.addEventListener("click" , () => {
+        console.log("Cliquer");
+        
+        // Code here..
+      });
+
   </script>
 
 

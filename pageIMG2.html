@@ -124,8 +124,12 @@
 
 
   <div class="page">
+    <video id="background" playsinline autoplay muted loop>
+      <source src="" type="video/webm" />
+      Woops votre fureteur ne supporte pas cette vidéo.
+    </video>
     <div class="circle-container">
-      <img id="background" src="/img/Identifiez2-Image.png" alt="Image with characters">
+      <img id="background-img" src="/img/Identifiez2-Image.png" alt="Image with characters">
       <button class="circle red-circle2 wrong"></button>
       <button class="circle green-circle correct"></button>
       <button class="circle red-circle1 wrong"></button>
@@ -193,7 +197,7 @@
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/audioStart.js"></script>
+  <!-- <script src="js/audioStart.js"></script> -->
 </body>
 
 </html>
