@@ -75,6 +75,7 @@
         <footer class="text-center">
           <!-- Temporaire -->
           <audio loop id="audio" src="/audio/PP_projet3_attente.mp3"></audio>
+          <audio  id="audio-voix" src="/audio/2Introduction.wav"></audio>
           <!-- <canvas></canvas> -->
         </footer>
       </div>
@@ -86,7 +87,10 @@
 
     <script>
       const audio = document.getElementById("audio");
-      audio.volume = 0.1;
+      const audioVoix = document.getElementById("audio-voix");
+      audioVoix.volume = 0.5;
+      audioVoix.play();
+      audio.volume = 0.05;
       audio.play();
       setTimeout(function() {
       document.querySelector('.btn-start').style.opacity = 1;

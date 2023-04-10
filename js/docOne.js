@@ -1,9 +1,9 @@
 const majorText = document.getElementById("phraseDebut");
-const phrase = "Bienvenue dans l'affaire Rictus. Dans ce documentaire interactif, vous allez acquérir de nouvelles connaissances sur le sujet et vous devrez affronter des épreuves et des énigmes en utilisant ce que vous avez appris. Il est important de mentionner que certains mots identifiés peuvent avoir des explications supplémentaires si vous êtes intéressé. Par exemple, le mot 'bienvenue' est identifié. Touchez-le pour continuer";
+const phrase = "Bienvenue dans l'Affaire Rictus ! Il s'agit d'un documentaire qui va raconter l'histoire du rictus et qui est nommé en référence au personnage qui nous a inspiré à développer ce projet. Dans ce documentaire interactif, vous allez acquérir de nouvelles connaissances sur le sujet et relever des épreuves et des énigmes en utilisant ce que vous avez appris. Il est important de mentionner que certains mots identifiés peuvent avoir des explications supplémentaires si vous êtes intéressé. Par exemple, si le mot 'bienvenue' est identifié, vous pouvez le toucher pour continuer votre exploration. ";
 
 
 const typingText = document.getElementById("typing-text");
-const phraseDetails = "Super ! Maintenant que vous êtes prêt, vous pouvez cliquer sur le bouton SUIVANT pour accéder à la première question. ";
+const phraseDetails = "Super ! Maintenant que vous êtes prêt, vous pouvez cliquer sur le bouton 'SUIVANT' pour accéder continuer l’aventure vous dirigez vers la première question";
 
 const interaction = "bienvenue";
 const interaction2 = "autre Mot";
@@ -49,6 +49,7 @@ function writer() {
   wordElement.addEventListener("click", function () {
     console.log("Mot cliquer !");
     // video.src = "../video/Scene2-question1.mp4"; // Changement de video lors du clique
+    btn_container.style.display = "block";
     majorText.style.display === "none";
     if (typingText.style.display === "none") {
       typingText.style.display = "block";
@@ -72,5 +73,5 @@ function typeWriter() {
   }
 }
 
-const interval1Id = setInterval(writer, 100);
+const interval1Id = setInterval(writer, 50);
 const intervalId = setInterval(typeWriter, 100);
