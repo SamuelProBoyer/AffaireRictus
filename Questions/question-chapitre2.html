@@ -54,6 +54,10 @@
       justify-content: center;
       align-items: center;
     }
+
+    .btn-next {
+      margin-top: 200px  !important;
+    }
 /* 
     .btn-container {
       border: 3px solid red;
@@ -153,7 +157,7 @@
                               </div>
                       </div>
                       <div class="btn-action">
-                        <a  class="btn-start" href="../Chapitres/chapitre2.html">
+                        <a  class="btn-start">
                           <i style="--i: 1">S</i>
                           <i style="--i: 2">u</i>
                           <i style="--i: 3">i</i>
@@ -162,7 +166,7 @@
                           <i style="--i: 6">n</i>
                           <i style="--i: 7">t</i>
                         </a>
-                        <a  class="btn-next" >
+                        <a  class="btn-next" href="../Chapitres/chapitre2.html">
                           <i style="--i: 1">S</i>
                           <i style="--i: 2">u</i>
                           <i style="--i: 3">i</i>
@@ -176,6 +180,7 @@
                     <footer class="text-center">
                         <!-- Temporaire -->
                         <audio id="audio" src="/audio/PP_projet3.mp3"></audio>
+                        <audio id="audioMajeur" src=""></audio>
                         <!-- <canvas></canvas> -->
                     </footer>
                   </div>
@@ -187,6 +192,8 @@
     <script src="../js/docTwo.js"></script>
     <script>
       const audio = document.getElementById("audio");
+      
+      
       audio.volume = 0.1;
       audio.play();
     </script>

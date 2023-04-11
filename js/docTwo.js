@@ -28,23 +28,31 @@ btn_action.forEach((button) => {
     typeWriter();
   });
 });
+const audioMajeur = document.getElementById("audioMajeur");
 // btn_start.style.display = "none";
 btn_start.addEventListener("click" , () => {
   bloc_content.style.display = "none";
   btn_start.style.display = "none";
   btn_next.style.display = "block";
-  video.src = "../video/Chapitre2-A.mp4";
+  // video.src = "../video/Chapitre2-A.mp4";
+  video.src = "../video/Chapitre2-Positif-Negatif-Normaliser.mp4";
+  audioMajeur.volume = 0.5;
+  audioMajeur.src = "../audio/6ComparaisonSourire.wav";
+  audioMajeur.play();
+  // if(video.currentTime === 0) {
+  //   video.src = "../video/Chapitre2-A.mp4";
+    
+  // }
   setTimeout(function() {
     document.querySelector('.btn-next').style.opacity = 1;
     
-  }, 30000);
+  }, 20000);
   
 });
 
-btn_next.addEventListener("click", () => {
-  video.src = "../video/Chapitre2-Loupe-Identifiez1.mp4";
+// btn_next.addEventListener("click", () => {
   
-});
+// });
 
 
 let string = "Les deux réponses sont bonnes. Les rictus proviennent du mot latin du même nom qui signifie une ouverture de la bouche ou montrer les dents. Ce sont des contractions musculaires majoritairement involontaires du visage qui entraînent une expression faciale rigide, déformée et souvent grotesque. Les rictus ont eu un grand impact dans les arts, la culture populaire et la science. ";

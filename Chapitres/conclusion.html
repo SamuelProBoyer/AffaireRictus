@@ -50,7 +50,7 @@
         <div class="btn-container">
           <div class="btn-row">
             <div class="col-btn">
-              <a class="btn-start">
+              <a class="btn btn-start">
                 <i style="--i: 1">S</i>
                 <i style="--i: 2">u</i>
                 <i style="--i: 3">i</i>
@@ -59,7 +59,7 @@
                 <i style="--i: 6">n</i>
                 <i style="--i: 7">t</i>
               </a>
-              <a class="btn btn-end" href="/fin.html">
+              <a class="btn btn-end" href="../Chapitres/fin.html">
                 <i style="--i: 1">T</i>
                 <i style="--i: 2">e</i>
                 <i style="--i: 3">r</i>
@@ -75,6 +75,7 @@
       <footer class="text-center">
         <!-- Temporaire -->
         <audio loop id="audio" src="/audio/PP_projet3_attente.mp3"></audio>
+        <audio  id="audioMajeur" src=""></audio>
         <!-- <canvas></canvas> -->
       </footer>
     </div>
@@ -86,7 +87,8 @@
 
   <script>
     const phraseDebut = document.getElementById("phraseDebut");
-    const audio = document.getElementById("audio");
+    const audio = document.getElementById("audio"); 
+    const audioMajeur = document.getElementById("audioMajeur");
     const btn_end = document.querySelector(".btn-end");
     const typingText = document.getElementById("typing-text");
     const btn_start = document.querySelector(".btn-start");
