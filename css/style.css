@@ -170,6 +170,7 @@ video {
 }
 
 body {
+  background-color: #222;
   overflow-y: hidden;
   overflow-x: hidden;
 }
@@ -210,6 +211,9 @@ body {
   footer span {
     color: #fff;
   }
+
+
+  
 
   
 

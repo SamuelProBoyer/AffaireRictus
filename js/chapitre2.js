@@ -1,4 +1,4 @@
-const btn_start = document.querySelector(".btn-start");
+      const btn_start = document.querySelector(".btn-start");
       const btn_introLoop = document.querySelector(".btn-introLoop");
       const btn_next = document.querySelector(".btn-next");
       const btn_continue = document.querySelector(".btn-continue");
@@ -8,6 +8,8 @@ const btn_start = document.querySelector(".btn-start");
       const audio = document.getElementById("audio");
       audio.volume = 0.1;
       audio.play();
+
+
       bloc_content.style.display = "none";
       btn_introLoop.style.display = "none";
       btn_next.style.display = "none";
@@ -31,6 +33,7 @@ const btn_start = document.querySelector(".btn-start");
         }, 15000);
         console.log("Je suis cliquer");
       });
+  
 
       // AFFICHE LE DEUXIEME TEXTE
       btn_next.addEventListener("click", () => {
@@ -88,6 +91,13 @@ const btn_start = document.querySelector(".btn-start");
 
       let phraseDebut = document.getElementById("phraseDebut");
       let typing_text = document.getElementById("typing-text");
+
+      btn_next.setAttribute("disabled", true);
+      
+      if(i === string.length) {
+        //   btn_next.disable = false;
+          btn_next.setAttribute("disabled", false);
+      }
 
       function typeWriter() {
         if (i < string.length) {

@@ -56,19 +56,102 @@ btn_start.addEventListener("click" , () => {
 let string = "Les deux réponses sont bonnes. Les rictus proviennent du mot latin du même nom qui signifie une ouverture de la bouche ou montrer les dents. Ce sont des contractions musculaires majoritairement involontaires du visage qui entraînent une expression faciale rigide, déformée et souvent grotesque. Les rictus ont eu un grand impact dans les arts, la culture populaire et la science. ";
 
 let i = 0;
+let y = 0;
+let j = 0;
 let phraseDebut = document.getElementById("phraseDebut");
+let phraseEnCours = "";
+
+const interaction1 = "involontaires";
+const interaction2 = "arts";
+
+const typingText = document.getElementById("typing-text");
+const phraseDetails = "Les rictus volontaires sont souvent considérés comme une représentation humoristique exagérée d'une émotion. "
+
+const typingText2 = document.getElementById("typing-text2");
+const phraseDetails2 = "Dans les arts, le rictus a grandement influencé les mouvements sombres de l'art. Le rictus a souvent été utilisé pour représenter les émotions sombres et négatives de l'existence humaine, en particulier pour mettre en valeur la souffrance psychologique et les émotions intenses de l'homme. "
 
 function typeWriter() {
+  let debut = string.indexOf(interaction1);
+  let fin = debut + interaction1.length;
+
+  let debut2 = string.indexOf(interaction2);
+  let fin2 = debut + interaction2.length;
+
   if (i < string.length) {
-    phraseDebut.innerHTML += string.charAt(i);
+    const char = string.charAt(i);
     i++;
     
     setTimeout(typeWriter, 45);
+    if (i == debut) {
+      phraseEnCours += '<span id="word" class="shine">';
+    }else if (i == debut2) {
+      phraseEnCours += '<span id="word2" class="shine">';
+    }
+
+    phraseEnCours += char;
+
+    if (i < fin) {
+      phraseDebut.innerHTML = phraseEnCours + "</span>";
+    } else if (i < fin2) {
+      phraseDebut.innerHTML = phraseEnCours + "</span>";
+    } else {
+      let c1 = phraseEnCours.replace(interaction1, "involontaires</span>");
+      let c2 = c1.replace(interaction2, "arts</span>");
+      phraseDebut.innerHTML = c2;
+    }
   }
 
   // if(i === string.length) {
-  //   btn_next.style.display = "flex";
+  //   btn_next.style.display = "inline";
   // }
+
+  const wordElement = document.getElementById("word");
+  wordElement.addEventListener("click", function () {
+    console.log("Mot cliquer !");
+    wordElement.classList.remove('shine');
+    phraseDebut.style.display === "none";
+    if (typingText.style.display === "none") {
+      typingText.style.display = "block";
+      wordElement.style.color = "white";
+      wordElement.style.fontWeight = "bold";
+    }
+  });
+
+  const wordElement2 = document.getElementById("word2");
+  wordElement2.addEventListener("click", function () {
+    console.log("Mot cliquer !");
+    wordElement2.classList.remove('shine');
+    phraseDebut.style.display === "none";
+    if (typingText2.style.display === "none") {
+      typingText2.style.display = "block";
+      wordElement2.style.color = "white";
+      wordElement2.style.fontWeight = "bold";
+    }
+  });
 }
+
+function typeWriterPlus() {
+  if (typingText.style.display === "block") {
+    if (j < phraseDetails.length) {
+      typingText.innerHTML += phraseDetails.charAt(j);
+      j++;
+    } else {
+      clearInterval(intervalId);
+    }
+  }
+}
+function typeWriterPlus2() {
+  if (typingText2.style.display === "block") {
+    if (y < phraseDetails2.length) {
+      typingText2.innerHTML += phraseDetails2.charAt(y);
+      y++;
+    } else {
+      clearInterval(interval2Id);
+    }
+  }
+}
+
+const intervalId = setInterval(typeWriterPlus, 100);
+const interval2Id = setInterval(typeWriterPlus2, 100);
 
 
