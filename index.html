@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css" />
   <!-- <link rel="stylesheet" href="../css/transition.css" /> -->
-  <script src="/js/script.js"></script>
+  <!-- <script src="/js/script.js"></script> -->
   <title>L'affaire Rictus</title>
 </head>
 
@@ -55,7 +55,7 @@
       <div class="container btn-container">
         <div class="row btn-row">
           <div class="col-md-12">
-            <a class="btn-start">
+            <a class="btn btn-start">
               <i style="--i: 1">C</i>
               <i style="--i: 2">o</i>
               <i style="--i: 3">m</i>
@@ -67,7 +67,7 @@
               <i style="--i: 9">r</i>
               <i style="--i: 10"></i>
             </a>
-            <a class="btn" href="Chapitres/chapitre1.html">
+            <a class="btn btn-chapitre1" href="Chapitres/chapitre1.html">
               <i style="--i: 1">S</i>
               <i style="--i: 2">u</i>
               <i style="--i: 3">i</i>
@@ -94,23 +94,25 @@
       const video = document.getElementById("background");
       const audio = document.getElementById("audio");
       const btn_start = document.querySelector(".btn-start");
-      const btn = document.querySelector(".btn");
+      const btn_ch1 = document.querySelector(".btn-chapitre1");
+      // const btn = document.querySelector(".btn");
+      btn_ch1.style.display = "none";
+      // btn_start.style.display = "flex";
       audio.volume = 0.1;
       audio.play();
-      btn.style.display = "none";
       btn_start.addEventListener("click" , () => {
         btn_start.style.display = "none";
-        btn.style.display = "block";
+        btn_ch1.style.display = "flex";
         video.src = "../video/Scene2-NoFadeOut.mp4";
         setTimeout(function() {
-        document.querySelector('.btn').style.opacity = 1;
-      }, 5000);
+          btn_ch1.style.opacity = 1;
+      }, 2000);
         console.log("Je suis cliquer !");
       })
       
 
       setTimeout(function() {
-        document.querySelector('.btn-start').style.opacity = 1;
+        btn_start.style.opacity = 1;
       }, 5000);
 
       

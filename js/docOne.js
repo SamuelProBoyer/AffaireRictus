@@ -1,6 +1,20 @@
 const majorText = document.getElementById("phraseDebut");
 const phrase = "Bienvenue dans l'Affaire Rictus ! Il s'agit d'un documentaire qui va raconter l'histoire du rictus et qui est nommé en référence au personnage qui nous a inspiré à développer ce projet. Dans ce documentaire interactif, vous allez acquérir de nouvelles connaissances sur le sujet et relever des épreuves et des énigmes en utilisant ce que vous avez appris. Il est important de mentionner que certains mots identifiés peuvent avoir des explications supplémentaires si vous êtes intéressé. Par exemple, si le mot 'bienvenue' est identifié, vous pouvez le toucher pour continuer votre exploration. ";
+const audio = document.getElementById("audio");
 
+
+const audioVoix = document.getElementById("audio-voix");
+audioVoix.volume = 0.5;
+audioVoix.play();
+
+
+// volume de laudio
+audio.volume = 0.05;
+audio.play();
+setTimeout(function() {
+document.querySelector('.btn-start').style.opacity = 1;
+document.querySelector('.btn-container').style.display = "block";
+}, 20000);
 
 const typingText = document.getElementById("typing-text");
 const phraseDetails = "Super ! Maintenant que vous êtes prêt, vous pouvez cliquer sur le bouton 'SUIVANT' pour continuer l’aventure vous dirigez vers la première question";

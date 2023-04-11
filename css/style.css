@@ -87,13 +87,7 @@ p{
   cursor: pointer;
 }
 
-/* .btn-next {
-  opacity: 0;
-  transition: opacity 2s ease-in-out;
-  cursor: pointer;
-
-} */
-.btn-start i {
+/* .btn-start i {
   font-size: 1.5rem;
   font-style: normal;
 }
@@ -103,7 +97,7 @@ p{
 
 }
 
-.btn-start:hover i {
+.btn-start:hover i, .btn-next:hover i, .btn-toImg:hover i{
   animation-name: jump;
   animation-duration: 0.5s;
   animation-delay: calc(var(--i) * 0.075s);
@@ -111,7 +105,7 @@ p{
 
 .btn-start:focus {
   border: none;
-}
+} */
 
 
 

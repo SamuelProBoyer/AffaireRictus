@@ -5,9 +5,11 @@ const btn_start = document.querySelector(".btn-start");
 const btn_next = document.querySelector(".btn-next");
 const bloc_content = document.querySelector(".bloc-content");
 const audioBtn = new Audio("../audio/5DeuxBonnesReponses.wav");
-console.log(audioBtn);
-
-// btn_suivant.style.display = "none";
+const audio = document.getElementById("audio");
+      
+      
+      audio.volume = 0.1;
+      audio.play();
 
 bloc_content.style.display = "none";
 btn_next.style.display = "none";
