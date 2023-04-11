@@ -2,7 +2,7 @@
       background-color: #22222269;
       padding: 2rem 0;
       text-align: center;
-      padding: 1% 30%;
+      padding: 1% 10%;
       max-width: 2000px;
       margin: 0 auto;
     }
@@ -199,7 +199,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 284px;
+    min-height: 184px;
   }
 
   header h1 {
