@@ -41,7 +41,7 @@ function writer() {
     i++;
 
     if (i == debut) {
-      phraseEnCours += '<span id="word">';
+      phraseEnCours += '<span id="word" class="shine">';
     }
 
     phraseEnCours += char;
@@ -61,12 +61,13 @@ function writer() {
   btn_container.style.display = "none";
   wordElement.addEventListener("click", function () {
     console.log("Mot cliquer !");
+    wordElement.classList.remove('shine');
     // video.src = "../video/Scene2-question1.mp4"; // Changement de video lors du clique
     btn_container.style.display = "block";
     majorText.style.display === "none";
     if (typingText.style.display === "none") {
       typingText.style.display = "block";
-      wordElement.style.color = "red";
+      wordElement.style.color = "white";
       wordElement.style.fontWeight = "bold";
     }
   });
