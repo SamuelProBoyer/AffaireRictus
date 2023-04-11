@@ -49,7 +49,7 @@ btn_start.addEventListener("click" , () => {
   
 });
 
-
+const videoRoller = document.getElementById("background");
 
 let string = "Les deux réponses sont bonnes. Les rictus proviennent du mot latin du même nom qui signifie une ouverture de la bouche ou montrer les dents. Ce sont des contractions musculaires majoritairement involontaires du visage qui entraînent une expression faciale rigide, déformée et souvent grotesque. Les rictus ont eu un grand impact dans les arts, la culture populaire et la science. ";
 
@@ -61,6 +61,7 @@ let phraseEnCours = "";
 
 const interaction1 = "involontaires";
 const interaction2 = "arts";
+const interaction3 = "culture";
 
 const typingText = document.getElementById("typing-text");
 const phraseDetails = "Les rictus volontaires sont souvent considérés comme une représentation humoristique exagérée d'une émotion. "
@@ -68,12 +69,19 @@ const phraseDetails = "Les rictus volontaires sont souvent considérés comme un
 const typingText2 = document.getElementById("typing-text2");
 const phraseDetails2 = "Dans les arts, le rictus a grandement influencé les mouvements sombres de l'art. Le rictus a souvent été utilisé pour représenter les émotions sombres et négatives de l'existence humaine, en particulier pour mettre en valeur la souffrance psychologique et les émotions intenses de l'homme. "
 
+const typingText3 = document.getElementById("typing-text3");
+const phraseDetails3 = "Dans la culture populaire, de nombreux personnages célèbres sont connus pour arborer des sourires forcés qui pourraient être identifiés comme des rictus. Parmi ces personnages, nous pouvons citer le Joker et Freddy Krueger, qui représentent des personnages ayant des troubles psychologiques et des rictus incontrôlables. Les rictus sont souvent représentés à travers des personnages aliénées ou ayant des problèmes psychologiques majeurs. "
+let z = 0;
+
 function typeWriter() {
   let debut = string.indexOf(interaction1);
   let fin = debut + interaction1.length;
 
   let debut2 = string.indexOf(interaction2);
   let fin2 = debut + interaction2.length;
+  
+  let debut3 = string.indexOf(interaction3);
+  let fin3 = debut + interaction3.length;
 
   if (i < string.length) {
     const char = string.charAt(i);
@@ -85,6 +93,9 @@ function typeWriter() {
     }else if (i == debut2) {
       phraseEnCours += '<span id="word2" class="shine">';
     }
+    else if (i == debut3) {
+      phraseEnCours += '<span id="word3" class="shine">';
+    }
 
     phraseEnCours += char;
 
@@ -92,16 +103,17 @@ function typeWriter() {
       phraseDebut.innerHTML = phraseEnCours + "</span>";
     } else if (i < fin2) {
       phraseDebut.innerHTML = phraseEnCours + "</span>";
-    } else {
+    } 
+    else if (i < fin3) {
+      phraseDebut.innerHTML = phraseEnCours + "</span>";
+    } 
+    else{
       let c1 = phraseEnCours.replace(interaction1, "involontaires</span>");
       let c2 = c1.replace(interaction2, "arts</span>");
-      phraseDebut.innerHTML = c2;
+      let c3 = c2.replace(interaction3, "culture</span>");
+      phraseDebut.innerHTML = c3;
     }
   }
-
-  // if(i === string.length) {
-  //   btn_next.style.display = "inline";
-  // }
 
   const wordElement = document.getElementById("word");
   wordElement.addEventListener("click", function () {
@@ -118,12 +130,26 @@ function typeWriter() {
   const wordElement2 = document.getElementById("word2");
   wordElement2.addEventListener("click", function () {
     console.log("Mot cliquer !");
+    // videoRoller.src = "../video/Chapitre1-Art-V2.mp4";
     wordElement2.classList.remove('shine');
     phraseDebut.style.display === "none";
     if (typingText2.style.display === "none") {
       typingText2.style.display = "block";
       wordElement2.style.color = "white";
       wordElement2.style.fontWeight = "bold";
+    }
+  });
+
+  const wordElement3 = document.getElementById("word3");
+  wordElement3.addEventListener("click", function () {
+    console.log("Mot cliquer !");
+    // videoRoller.src = "../video/Chapitre1-Art-V2.mp4";
+    wordElement3.classList.remove('shine');
+    phraseDebut.style.display === "none";
+    if (typingText3.style.display === "none") {
+      typingText3.style.display = "block";
+      wordElement3.style.color = "white";
+      wordElement3.style.fontWeight = "bold";
     }
   });
 }
@@ -148,6 +174,17 @@ function typeWriterPlus2() {
     }
   }
 }
+function typeWriterPlus3() {
+  if (typingText2.style.display === "block") {
+    if (z < phraseDetails2.length) {
+      typingText2.innerHTML += phraseDetails2.charAt(z);
+      z++;
+    } else {
+      clearInterval(interval3Id);
+    }
+  }
+}
 
 const intervalId = setInterval(typeWriterPlus, 100);
 const interval2Id = setInterval(typeWriterPlus2, 100);
+const interval3Id = setInterval(typeWriterPlus3, 100);
