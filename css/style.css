@@ -71,6 +71,28 @@ p{
   border: none;
 }
 
+.shine {
+  animation-name: shine;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shine {
+  0% {
+    color: white;
+    text-shadow: none;
+  }
+  50% {
+    color: yellow;
+    text-shadow: 0 0 10px yellow;
+  }
+  100% {
+    color: white;
+    text-shadow: none;
+  }
+}
+
+
 .btn-start,.btn-next,.btn-toImg {
   display: flex;
   align-items: center;
