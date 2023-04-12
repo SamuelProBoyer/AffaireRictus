@@ -103,13 +103,13 @@ function typeWriter() {
       phraseEnCours += '<span id="word" class="shine">';
     } 
     else if (i == debut2) {
-      phraseEnCours += '<span id="word2" class="shine">';
+      phraseEnCours += '<span id="word2" class="shine2">';
     } 
     else if (i == debut3) {
-      phraseEnCours += '<span id="word3" class="shine">';
+      phraseEnCours += '<span id="word3" class="shine3">';
     }
     else if (i == debut4) {
-      phraseEnCours += '<span id="word4" class="shine">';
+      phraseEnCours += '<span id="word4" class="shine4">';
     }
 
     phraseEnCours += char;
@@ -135,44 +135,56 @@ function typeWriter() {
       phraseDebut.innerHTML = c4;
     }
   }
-  // involontaire
+  // Involontaire
   const wordElement = document.getElementById("word");
   wordElement.addEventListener("click", function () {
     console.log("Mot cliquer !");
 
     wordElement.classList.remove("shine");
-
+    wordElement2.classList.add("shine2");
     phraseDebut.style.display === "none";
-    // art
+    
     if (typingText.style.display === "none") {
       typingText.style.display = "block";
       wordElement.style.color = "white";
       wordElement.style.fontWeight = "bold";
+      typingText2.style.display = "none";
+      typingText3.style.display = "none";
+      typingText4.style.display = "none";
     }
   });
-  // culture
+  //  art
   const wordElement2 = document.getElementById("word2");
   wordElement2.addEventListener("click", function () {
     console.log("Mot cliquer !"); 
-    // videoRoller.src = "../video/Chapitre1-Art-V2.mp4";
 
-    wordElement2.classList.remove("shine");
+    wordElement2.classList.remove("shine2");
 
     phraseDebut.style.display === "none";
-
+    wordElement.classList.add("shine");
+    wordElement3.classList.add("shine3");
+    wordElement4.classList.add("shine4");
+    
+    
     if (typingText2.style.display === "none") {
       typingText2.style.display = "block";
       wordElement2.style.color = "white";
       wordElement2.style.fontWeight = "bold";
+      typingText.style.display = "none";
+      typingText3.style.display = "none";
+      typingText4.style.display = "none";
     }
   });
-  // science
+  // culture
   const wordElement3 = document.getElementById("word3");
   wordElement3.addEventListener("click", function () {
     console.log("Mot cliquer !"); 
     // videoRoller.src = "../video/Chapitre1-Art-V2.mp4";
 
-    wordElement3.classList.remove("shine");
+    wordElement3.classList.remove("shine3");
+    wordElement.classList.add("shine");
+    wordElement2.classList.add("shine2");
+    wordElement4.classList.add("shine4");
 
     phraseDebut.style.display === "none";
 
@@ -180,15 +192,21 @@ function typeWriter() {
       typingText3.style.display = "block";
       wordElement3.style.color = "white";
       wordElement3.style.fontWeight = "bold";
+      typingText.style.display = "none";
+      typingText2.style.display = "none";
+      typingText4.style.display = "none";
     }
   });
-  
+  // science
   const wordElement4 = document.getElementById("word4");
   wordElement4.addEventListener("click", function () {
     console.log("Mot cliquer !"); 
     // videoRoller.src = "../video/Chapitre1-Art-V2.mp4";
 
-    wordElement4.classList.remove("shine");
+    wordElement4.classList.remove("shine4");
+    wordElement.classList.add("shine");
+    wordElement2.classList.add("shine2");
+    wordElement3.classList.add("shine3");
 
     phraseDebut.style.display === "none";
 
@@ -196,6 +214,9 @@ function typeWriter() {
       typingText4.style.display = "block";
       wordElement4.style.color = "white";
       wordElement4.style.fontWeight = "bold";
+      typingText.style.display = "none";
+      typingText2.style.display = "none";
+      typingText3.style.display = "none";
     }
   });
 }

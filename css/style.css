@@ -1,3 +1,10 @@
+:root {
+  --color_yellow: #FEE886;
+  --color_red: #CC3A3D;
+  --color_green: #306437;
+  --color_blue: #8ab8a2;
+}
+
 .bloc-content {
       background-color: #22222269;
       padding: 2rem 0;
@@ -78,8 +85,68 @@ p{
     text-shadow: none;
   }
   50% {
-    color: yellow;
-    text-shadow: 0 0 10px yellow;
+    color: var(--color_yellow);
+    text-shadow: 0 0 10px var(--color_yellow);
+  }
+  100% {
+    color: white;
+    text-shadow: none;
+  }
+}
+.shine2 {
+  animation-name: shine2;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shine2 {
+  0% {
+    color: white;
+    text-shadow: none;
+  }
+  50% {
+    color: var(--color_red);
+    text-shadow: 0 0 10px var(--color_red);
+  }
+  100% {
+    color: white;
+    text-shadow: none;
+  }
+}
+.shine3 {
+  animation-name: shine3;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shine3 {
+  0% {
+    color: white;
+    text-shadow: none;
+  }
+  50% {
+    color: var(--color_blue);
+    text-shadow: 0 0 10px var(--color_blue);
+  }
+  100% {
+    color: white;
+    text-shadow: none;
+  }
+}
+.shine4 {
+  animation-name: shine4;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shine4 {
+  0% {
+    color: white;
+    text-shadow: none;
+  }
+  50% {
+    color: var(--color_green);
+    text-shadow: 0 0 10px var(--color_green);
   }
   100% {
     color: white;
