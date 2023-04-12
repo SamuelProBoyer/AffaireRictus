@@ -5,6 +5,7 @@ const btn_next = document.querySelector(".btn-next");
 const bloc_content = document.querySelector(".bloc-content");
 const audioBtn = new Audio("../audio/5DeuxBonnesReponses.wav");
 const audio = document.getElementById("audio");
+const audioMajeur = document.getElementById("audioMajeur");
 
 audio.volume = 0.1;
 audio.play();
@@ -27,7 +28,6 @@ btn_action.forEach((button) => {
     typeWriter();
   });
 });
-const audioMajeur = document.getElementById("audioMajeur");
 
 btn_start.addEventListener("click", () => {
   bloc_content.style.display = "none";
@@ -45,12 +45,12 @@ btn_start.addEventListener("click", () => {
   }, 20000);
 });
 
+// Les mots avec interactions ----------------------------------------------------------------------------------------------------
+
 let interaction1Writing = false;
 let interaction2Writing = false;
 let interaction3Writing = false;
 let interaction4Writing = false;
-
-const videoRoller = document.getElementById("background");
 
 let string = "Les deux réponses sont bonnes. Les rictus proviennent du mot latin du même nom qui signifie une ouverture de la bouche ou montrer les dents. Ce sont des contractions musculaires majoritairement involontaires du visage qui entraînent une expression faciale rigide, déformée et souvent grotesque. Les rictus ont eu un grand impact dans les arts, la culture populaire et la science. ";
 let i = 0;
