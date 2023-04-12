@@ -35,6 +35,6 @@ const wrongButtons = document.querySelectorAll(".wrong");
         audioMajeur.play(); 
       }, 1000);
       setTimeout(function () {
-        document.location.href = "/Chapitres/conclusion.html";
+        document.location.href = "/Chapitres/chapitre3.html";
       }, 20000);
     });
