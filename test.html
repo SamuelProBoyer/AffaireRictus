@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <video id="background" playsinline autoplay muted loop>
+        <source src="/video/Chapitre1-Loop.mp4" type="video/webm" />
+        Woops votre fureteur ne supporte pas cette vidéo.
+      </video>
+    <!-- HTML -->
+<audio id="myAudio" src="/audio/11IntroTest.wav"></audio>
+<script>
+    // JavaScript
+var audioElement = document.getElementById("myAudio");
+var videoElement = document.getElementById("background");
+audioElement.play();
+audioElement.addEventListener("ended", function() {
+    console.log("terminer");
+  // Switch to new audio source
+  videoElement.src = "/video/Chapitre1-Art-V2.mp4";
+  audioElement.src = "/audio/2IntroductionPart1.wav";
+  videoElement.load(); // Reload the video
+  audioElement.load(); // Reload the audio
+  audioElement.play(); // Play the new audio
+});
+
+</script>
+</body>
+</html>

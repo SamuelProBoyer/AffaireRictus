@@ -7,7 +7,7 @@ const audioBtn = new Audio("../audio/5DeuxBonnesReponses.wav");
 const audio = document.getElementById("audio");
 const audioMajeur = document.getElementById("audioMajeur");
 
-audio.volume = 0.1;
+audio.volume = 0.5;
 audio.play();
 
 bloc_content.style.display = "none";
@@ -21,7 +21,7 @@ btn_action.forEach((button) => {
       setTimeout(function () {
         document.querySelector(".btn-start").style.opacity = 1;
         btn_start.style.display = "flex";
-      }, 10000);
+      }, 20000);
       button.style.display = "none";
       audioBtn.play();
     });
@@ -35,14 +35,19 @@ btn_start.addEventListener("click", () => {
   btn_start.style.opacity = 0;
   btn_next.style.display = "flex";
   // video.src = "../video/Chapitre2-A.mp4";
-  video.src = "../video/Chapitre2-Positif-Negatif-Normaliser.mp4";
-  audioMajeur.volume = 0.5;
+  video.src = "../video/Chapitre1-Positif-Negatif-Normaliser_V2.mp4";
+  // audioMajeur.volume = 0.5;
   audioMajeur.src = "../audio/6ComparaisonSourire.wav";
-  audioMajeur.play();
+  audio.src = "../audio/PP_projet3_attente.mp3";
+  audio.volume = 0.2;
+  setTimeout(function () {
+    audio.play();
+    audioMajeur.play();
+  }, 2000);
 
   setTimeout(function () {
     btn_next.style.opacity = 1;
-  }, 20000);
+  }, 30000);
 });
 
 // Les mots avec interactions ----------------------------------------------------------------------------------------------------

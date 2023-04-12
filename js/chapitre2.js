@@ -77,6 +77,7 @@
       // btn_toImg.addEventListener("click", () => {
 
       // });
+      
 
       let string =
         "L'équipe de l'Affaire Rictus a effectué des recherches et a découvert que les rictus peuvent être causés par de nombreuses conditions médicales, telles que la maladie de Parkinson, les dystonies faciales, les tics nerveux et les traumatismes crâniens, entre autres. Dans la liste des maladies les plus connues causant le rictus il y a : Rictus sardonique , Rictus de la maladie de Parkinson , Dystonies faciales et Troubles du mouvement ";
