@@ -27,14 +27,13 @@ h2 {
 }
 
 p{
+  
   font-family: 'Caveat', cursive;
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 2rem 0;
 }
 
-/* i:last-of-type {
-  margin-left: 10px;
-} */
+
 
 .btn {
   display: flex;
@@ -45,10 +44,6 @@ p{
   margin: 3rem 0;
   font-family: 'Satisfy', cursive;
   background-color: #22222271;
-  /* background-image: url("../img/blobanimation.svg"); */
-  /* background-position: center; */
-  /* background-size: contain; */
-  /* background-repeat: no-repeat; */
 }
 
 .btn i {
@@ -108,32 +103,6 @@ p{
   transition: opacity 2s ease-in-out;
   cursor: pointer;
 }
-
-/* .btn-start i {
-  font-size: 1.5rem;
-  font-style: normal;
-}
-
-.btn-start:hover, .btn-next:hover , .btn-toImg:hover {
-  color: white;
-
-}
-
-.btn-start:hover i, .btn-next:hover i, .btn-toImg:hover i{
-  animation-name: jump;
-  animation-duration: 0.5s;
-  animation-delay: calc(var(--i) * 0.075s);
-}
-
-.btn-start:focus {
-  border: none;
-} */
-
-
-
-
-
-
 
 @keyframes jump {
   50% {

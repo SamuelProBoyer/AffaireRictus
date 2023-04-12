@@ -135,7 +135,7 @@ function typeWriter() {
       phraseDebut.innerHTML = c4;
     }
   }
-
+  // involontaire
   const wordElement = document.getElementById("word");
   wordElement.addEventListener("click", function () {
     console.log("Mot cliquer !");
@@ -143,14 +143,14 @@ function typeWriter() {
     wordElement.classList.remove("shine");
 
     phraseDebut.style.display === "none";
-
+    // art
     if (typingText.style.display === "none") {
       typingText.style.display = "block";
       wordElement.style.color = "white";
       wordElement.style.fontWeight = "bold";
     }
   });
-
+  // culture
   const wordElement2 = document.getElementById("word2");
   wordElement2.addEventListener("click", function () {
     console.log("Mot cliquer !"); 
@@ -166,7 +166,7 @@ function typeWriter() {
       wordElement2.style.fontWeight = "bold";
     }
   });
-
+  // science
   const wordElement3 = document.getElementById("word3");
   wordElement3.addEventListener("click", function () {
     console.log("Mot cliquer !"); 
@@ -204,6 +204,8 @@ function typeWriterPlus() {
   if (typingText.style.display === "block" && interaction2Writing === false && interaction3Writing === false && interaction4Writing === false) {
     if (j < phraseDetails.length) {
       typingText.innerHTML += phraseDetails.charAt(j);
+
+      
 
       j++;
 

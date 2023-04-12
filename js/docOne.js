@@ -63,6 +63,8 @@ function writer() {
     console.log("Mot cliquer !");
     wordElement.classList.remove('shine');
     // video.src = "../video/Scene2-question1.mp4"; // Changement de video lors du clique
+    audioVoix.src = "../audio/2IntroductionPart2.wav";
+    audioVoix.play();
     btn_container.style.display = "block";
     majorText.style.display === "none";
     if (typingText.style.display === "none") {
@@ -82,6 +84,7 @@ function typeWriter() {
       typingText.innerHTML += phraseDetails.charAt(j);
       j++;
     } else {
+
       clearInterval(intervalId);
     }
   }
