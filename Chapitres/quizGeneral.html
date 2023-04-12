@@ -5,14 +5,128 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/img/blobanimation.svg" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet" />
 
     <title>Quiz Rictus</title>
 
     <!-- <link rel="stylesheet" href="style.css" /> -->
   </head>
+  <style>
+    :root {
+      --color_yellow: #fee886;
+      --color_red: #cc3a3d;
+      --color_green: #306437;
+      --color_blue: #8ab8a2;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #222;
+      font-family: "Satisfy", sans-serif;
+    }
+
+    #quiz-container {
+      background-color: rgba(34, 34, 34, 0.678);
+      padding: 20px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+
+    #title {
+      font-size: 3rem;
+      font-family: "Caveat", sans-serif;
+      color: #fff;
+    }
+    
+    #username {
+        font-size: 24px;
+        color: #fff;
+    }
+    
+    #btn-connexion,
+    #next-btn,
+    #sign-out-btn {
+        font-family: "Satisfy", sans-serif;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: var(--color_blue);
+        color: #ffffff;
+        border-radius: .5rem;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+    
+    #question-container {
+        margin-top: 40px;
+    }
+    
+    #question {
+        font-size: 2rem;
+        font-family: "Caveat", sans-serif;
+        color: #fff;
+    }
+    
+    #options {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+    
+    .option-btn {
+        font-family: "Caveat", sans-serif;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #f0f0f0;
+        border-radius: .5rem;
+        color: #000000;
+        border: 1px solid #000000;
+        cursor: pointer;
+        font-size: 2rem;
+        width: 100%;
+    }
+    
+    .option-btn:hover {
+        background-color: #dcdcdc;
+    }
+    
+    #feedback-container {
+        margin-top: 20px;
+    }
+    
+    #feedback {
+        font-size: 1.5rem;
+        color: #fff;
+        font-family: "Caveat", sans-serif;
+    }
+    
+    #score,
+    #percent {
+        margin-top: 20px;
+        font-size: 2rem;
+        color: #fff;
+        font-family: "Caveat", sans-serif;
+    }
+    
+    #sign-out-btn {
+        margin-top: 40px;
+        background-color: #dc3545;
+    }
+    </style>
   <body>
-    <h1 id="title">Quiz Rictus</h1>
-    <h2 id="username"></h2>
+      <h1 id="title">Quiz Rictus</h1>
+      <h2 id="username"></h2>
     <button id="btn-connexion">Se connecter</button>
     <div id="quiz-container">
       <div id="question-container">
@@ -25,8 +139,9 @@
       <div id="feedback-container">
         <p id="feedback"></p>
       </div>
+      <p id="percent"></p>
       <button id="next-btn">Suivant</button>
-      <p id="score">Score: 0</p>
+      <p id="score"></p>
       <button id="sign-out-btn">Se déconnecter</button>
     </div>
     <audio id="correct-sound" src="../audio/correct_sound.mp3"></audio>
@@ -41,7 +156,10 @@
         GoogleAuthProvider,
         signOut,
       } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
-      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
+      import {
+        getFirestore,
+        collection,
+      } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -57,9 +175,11 @@
 
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
-    //   console.log(app);
+      const db = getFirestore(app);
+      //   console.log(app);
 
       var questionElement = document.getElementById("question");
+      var percent = document.getElementById("percent");
       var usernameElement = document.getElementById("username");
       var btnConnexion = document.getElementById("btn-connexion");
       var quizContainer = document.getElementById("quiz-container");
@@ -82,23 +202,26 @@
       quizContainer.style.display = "none";
       //   var user = auth;
       btnConnexion.addEventListener("click", () => {
-          signInWithPopup(auth, provider)
+        signInWithPopup(auth, provider)
           .then((result) => {
-              const credential = GoogleAuthProvider.credentialFromResult(result);
-              const token = credential.accessToken;
-              const user = result.user;
-              quizContainer.style.display = "block";
-              usernameElement.innerHTML = user.displayName;
-              console.log(user);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                const email = error.customData.email;
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
-            });
-        });
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+            btnConnexion.style.display = "none";
+            // user = auth;
+
+            quizContainer.style.display = "block";
+            usernameElement.innerHTML = user.displayName;
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.customData.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+          });
+      });
 
       signOutButton.addEventListener("click", function () {
         signOut(auth)
@@ -110,6 +233,7 @@
           })
           .catch((error) => {
             // An error happened.
+            btnConnexion.style.display = "block";
             console.log("nopo");
           });
       });
@@ -152,61 +276,82 @@
           answer: "En référence au personnage d’un comics du même nom",
         },
       ];
-        
-            function loadQuestion() {
-              feedbackElement.textContent = "";
-              var currentQuestion = questions[currentQuestionIndex];
-              questionElement.textContent = currentQuestion.question;
-              optionsElement.innerHTML = "";
-              for (var i = 0; i < currentQuestion.options.length; i++) {
-                var optionButton = document.createElement("button");
-                optionButton.classList.add("option-btn");
-                optionButton.textContent = currentQuestion.options[i];
-                optionsElement.appendChild(optionButton);
-                optionButton.addEventListener("click", checkAnswer);
-              }
-            }
-      
-            function checkAnswer(event) {
-              var selectedOption = event.target.textContent;
-              var currentQuestion = questions[currentQuestionIndex];
-              if (selectedOption === currentQuestion.answer) {
-                feedbackElement.textContent = "Bravo !";
-                score++;
-                scoreElement.innerHTML = "Score: " + score;
-                correctSound.play();
-              } else {
-                feedbackElement.textContent = "Et non...";
-                wrongSound.play();
-              }
-              var optionButtons = optionsElement.querySelectorAll(".option-btn");
-              for (var i = 0; i < optionButtons.length; i++) {
-                optionButtons[i].disabled = true;
-              }
-              nextButton.disabled = false;
-            }
-      
-            function nextQuestion() {
-              currentQuestionIndex++;
-              if (currentQuestionIndex < questions.length) {
-                loadQuestion();
-              } else {
-                endQuiz();
-              }
-            }
-      
-            function endQuiz() {
-              questionElement.textContent = "Quiz terminé !";
-              optionsElement.innerHTML = "";
-              feedbackElement.textContent = "";
-              scoreElement.textContent = "Pointage : " + score;
-              nextButton.disabled = true;
-            }
-      
-            nextButton.addEventListener("click", nextQuestion);
-      
-            loadQuestion();
-      
+
+      function loadQuestion() {
+        feedbackElement.textContent = "";
+        var currentQuestion = questions[currentQuestionIndex];
+        questionElement.textContent = currentQuestion.question;
+        optionsElement.innerHTML = "";
+        for (var i = 0; i < currentQuestion.options.length; i++) {
+          var optionButton = document.createElement("button");
+          optionButton.classList.add("option-btn");
+          optionButton.textContent = currentQuestion.options[i];
+          optionsElement.appendChild(optionButton);
+          optionButton.addEventListener("click", checkAnswer);
+        }
+      }
+
+      function checkAnswer(event) {
+        var selectedOption = event.target.textContent;
+        var currentQuestion = questions[currentQuestionIndex];
+        if (selectedOption === currentQuestion.answer) {
+          feedbackElement.textContent = "Bravo !";
+          score++;
+          //   scoreElement.innerHTML = "Score: " + score;
+          correctSound.play();
+        } else {
+          feedbackElement.textContent = "Et non...";
+          wrongSound.play();
+        }
+        var optionButtons = optionsElement.querySelectorAll(".option-btn");
+        for (var i = 0; i < optionButtons.length; i++) {
+          optionButtons[i].disabled = true;
+        }
+        nextButton.disabled = false;
+      }
+
+      function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+          loadQuestion();
+        } else {
+          endQuiz();
+        }
+      }
+
+      function endQuiz() {
+        questionElement.textContent = "Quiz terminé !";
+        optionsElement.innerHTML = "";
+        feedbackElement.textContent = "";
+        // scoreElement.textContent = "Pointage : " + score;
+        nextButton.disabled = true;
+        const percentage = (score / questions.length) * 100;
+        percent.innerHTML = `Pourcentage de bonnes reponses: ${percentage}%`;
+        // checkPercent();
+      }
+
+      //   function checkPercent(){
+      //       const userResponsesRef = collection(db,"userResponses");
+      //       const userResponsesQuery = userResponsesRef.where("userId", "==", user);
+      //       const userResponsesSnapshot =  userResponsesQuery.get();
+      //       const userResponses = userResponsesSnapshot.docs.map((doc) => doc.data());
+
+      //       // Retrieve quiz questions from Firestore
+      //       const quizQuestionsRef = collection(db,"quizQuestions");
+      //       const quizQuestionsSnapshot =  quizQuestionsRef.get();
+      //       const quizQuestions = quizQuestionsSnapshot.docs.map((doc) => doc.data());
+
+      //       // Calculate percentage of correct answers
+      //       const totalQuestions = quizQuestions.length;
+      //       const correctAnswers = userResponses.filter(
+      //         (response) => response.userAnswer === response.correctAnswer
+      //       ).length;
+
+      //   }
+
+      nextButton.addEventListener("click", nextQuestion);
+
+      loadQuestion();
     </script>
   </body>
 </html>
