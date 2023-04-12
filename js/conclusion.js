@@ -5,7 +5,7 @@ const phraseDebut = document.getElementById("phraseDebut");
     const typingText = document.getElementById("typing-text");
     const btn_start = document.querySelector(".btn-start");
     let string = "Même si le rictus est étudié depuis longtemps, il reste encore beaucoup de zones d'ombre autour de ce sujet. Il serait intéressant de mieux comprendre les mécanismes neurobiologiques qui sous-tendent le rictus. En bref, il reste beaucoup à apprendre sur le rictus, cette réaction physique et psychologique fascinante. "
-    let string2 = "En conclusion, il faut savoir que le rictus ne représente pas toujours les mauvaises intentions d'une personne. Parfois, ce type de réaction n'est pas créé par des mauvaises intentions, mais plutôt par un effet d'une maladie malheureusement peu contrôlable. Il faut chercher à être compréhensif envers ces personnes qui vivent des vies aussi normales que les autres, avec des familles et des émotions tout aussi compréhensibles que les autres. "
+    let string2 = "En conclusion, il faut savoir que le rictus ne représente pas toujours les mauvaises intentions d'une personne. Parfois, ce type de réaction n'est pas créé par des mauvaises intentions, mais plutôt par un effet d'une maladie malheureusement peu contrôlable voir pas du tout. Il faut chercher à être compréhensif envers ces personnes qui vivent des vies aussi normales que les autres, avec des familles, des émotions et des amis tout aussi compréhensibles que les autres. "
     audio.volume = 0.1;
     audio.play();
     setTimeout(function () {
@@ -13,6 +13,8 @@ const phraseDebut = document.getElementById("phraseDebut");
       document.querySelector('.btn-container').style.display = "block";
     }, 50000);
 
+    audioMajeur.src = "../audio/22Conclu_part1.wav";
+    audioMajeur.play();
 
     let i = 0;
     let j = 0;
@@ -39,6 +41,8 @@ const phraseDebut = document.getElementById("phraseDebut");
 
     btn_end.style.display = "none";
     btn_start.addEventListener("click" , () => {
+        audioMajeur.src = "../audio/23Conclu_part2.wav";
+        audioMajeur.play();
         btn_end.style.display = "flex";
         btn_start.style.display = "none";
         console.log("Je suis cliquer");
