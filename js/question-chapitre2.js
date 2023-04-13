@@ -21,7 +21,7 @@ btn_action.forEach((button) => {
       setTimeout(function () {
         document.querySelector(".btn-start").style.opacity = 1;
         btn_start.style.display = "flex";
-      }, 20000);
+      }, 30000);
       button.style.display = "none";
       audioBtn.play();
     });
