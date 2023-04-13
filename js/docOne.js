@@ -17,7 +17,7 @@ document.querySelector('.btn-container').style.display = "block";
 }, 20000);
 
 const typingText = document.getElementById("typing-text");
-const phraseDetails = "Super ! Maintenant que vous êtes prêt, vous pouvez cliquer sur le bouton 'SUIVANT' pour continuer l’aventure vous dirigez vers la première question";
+const phraseDetails = "Super ! Maintenant que vous êtes prêt, vous pouvez cliquer sur le bouton 'SUIVANT' pour continuer l’aventure et acceder à la première question vers la première question";
 
 const interaction = "bienvenue";
 const interaction2 = "autre Mot";
@@ -59,21 +59,23 @@ function writer() {
   const wordElement = document.getElementById("word");
   const btn_container = document.querySelector(".btn-container");
   btn_container.style.display = "none";
-  wordElement.addEventListener("click", function () {
-    console.log("Mot cliquer !");
-    wordElement.classList.remove('shine');
-    // video.src = "../video/Scene2-question1.mp4"; // Changement de video lors du clique
-    audioVoix.src = "../audio/2IntroductionPart2.wav";
-    audioVoix.play();
-    btn_container.style.display = "block";
-    majorText.style.display === "none";
-    if (typingText.style.display === "none") {
-      typingText.style.display = "block";
-      wordElement.style.color = "white";
-      wordElement.style.fontWeight = "bold";
-    }
-  });
-
+  if (wordElement) { 
+    wordElement.addEventListener("click", function () {
+      console.log("Mot cliquer !");
+      wordElement.classList.remove('shine');
+      // video.src = "../video/Scene2-question1.mp4"; // Changement de video lors du clique
+      audioVoix.src = "../audio/2IntroductionPart2.wav";
+      audioVoix.play();
+      btn_container.style.display = "block";
+      majorText.style.display === "none";
+      if (typingText.style.display === "none") {
+        typingText.style.display = "block";
+        wordElement.style.color = "white";
+        wordElement.style.fontWeight = "bold";
+      }
+    });
+  }
+    
 }
 
 

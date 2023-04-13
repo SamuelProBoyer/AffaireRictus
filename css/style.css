@@ -73,6 +73,29 @@ p{
   border: none;
 }
 
+#fil{
+  position: absolute;
+  justify-content: flex-start; /* Aligns the buttons to the left of the container */
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  color: white;
+  top: 0;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+#fil a {
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  text-decoration: none;
+  color: white;
+  margin-right: 10px;
+}
+
+#fil .home i {
+  font-size: 25px;
+}
+
 .shine {
   animation-name: shine;
   animation-duration: 1.5s;
