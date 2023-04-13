@@ -186,7 +186,13 @@ function typeWriter() {
   // sardonique
   const wordElement = document.getElementById("word");
   if (wordElement) {
+    let play = false;
     wordElement.addEventListener("click", function () {
+      if (!play) { 
+        audioMajeur.src = "/audio/9ASardonique.wav";
+        audioMajeur.play();
+        play = true;
+      }
       console.log("Mot cliquer !");
 
       wordElement.classList.remove("shine");
@@ -206,8 +212,14 @@ function typeWriter() {
 
   const wordElement2 = document.getElementById("word2");
   if (wordElement2) {
+    let play = false
     wordElement2.addEventListener("click", function () {
-      console.log("Mot cliquer !");
+      if (!play) { 
+        audioMajeur.src = "/audio/9BParkinson.wav";
+        audioMajeur.play();
+        play = true;
+      }
+        console.log("Mot cliquer !");
 
       wordElement2.classList.remove("shine2");
 
@@ -229,8 +241,14 @@ function typeWriter() {
 
   const wordElement3 = document.getElementById("word3");
   if (wordElement3) {
+    let play = false;
     wordElement3.addEventListener("click", function () {
       console.log("Mot cliquer !");
+      if (!play) {
+        audioMajeur.src = "/audio/9CDystonie.wav";
+        audioMajeur.play();
+        play = true;
+      }
 
       wordElement3.classList.remove("shine3");
       wordElement.classList.add("shine");
@@ -252,8 +270,15 @@ function typeWriter() {
 
   const wordElement4 = document.getElementById("word4");
   if (wordElement4) {
+    let play = false
     wordElement4.addEventListener("click", function () {
+      if (!play) {
+        audioMajeur.src = "/audio/9DTroubleMouvement.wav";
+        audioMajeur.play();
+        play = true;
+      }
       console.log("Mot cliquer !");
+      
 
       wordElement4.classList.remove("shine4");
       wordElement.classList.add("shine");
@@ -354,10 +379,10 @@ function typeWriterPlus4() {
   }
 }
 
-const intervalId = setInterval(typeWriterPlus, 100);
-const interval2Id = setInterval(typeWriterPlus2, 100);
-const interval3Id = setInterval(typeWriterPlus3, 100);
-const interval4Id = setInterval(typeWriterPlus4, 100);
+const intervalId = setInterval(typeWriterPlus, 48);
+const interval2Id = setInterval(typeWriterPlus2, 48);
+const interval3Id = setInterval(typeWriterPlus3, 48);
+const interval4Id = setInterval(typeWriterPlus4, 48);
 
 function typeWriterSecond() {
   let debut5 = string2.indexOf(interaction5);
