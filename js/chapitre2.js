@@ -6,6 +6,7 @@ const btn_toImg = document.querySelector(".btn-toImg");
 const bloc_content = document.querySelector(".bloc-content");
 const video = document.getElementById("background");
 const audio = document.getElementById("audio");
+const audioMajeurDebut = document.getElementById("audioMajeur");
 audio.volume = 0.1;
 audio.play();
 

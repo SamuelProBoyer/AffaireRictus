@@ -70,5 +70,5 @@ function typeWriter() {
   }
 }
 
-const interval1Id = setInterval(writer, 50);
+const interval1Id = setInterval(writer, 55);
 const intervalId = setInterval(typeWriter, 100);

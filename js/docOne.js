@@ -4,7 +4,7 @@ const audio = document.getElementById("audio");
 
 
 const audioVoix = document.getElementById("audio-voix");
-audioVoix.volume = 0.5;
+// audioVoix.volume = 0.5;
 audioVoix.play();
 
 

@@ -58,7 +58,7 @@ function draw() {
 }
 
 // Attent un delai avant de commencer laudio et de dessiner le canvas
-setTimeout(() => {
-    startAudio();
-    draw();
-}, delay);
+startAudio();
+// setTimeout(() => {
+//     draw();
+// }, delay);
