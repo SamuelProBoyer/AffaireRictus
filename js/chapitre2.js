@@ -413,7 +413,7 @@ function typeWriterPlus5() {
   }
 }
 
-const interval5Id = setInterval(typeWriterPlus5, 100);
+const interval5Id = setInterval(typeWriterPlus5, 70);
 
 function typeWriterLoop() {
   typingText5.style.display = "none";

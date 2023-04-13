@@ -7,7 +7,7 @@ const audioBtn = new Audio("../audio/5DeuxBonnesReponses.wav");
 const audio = document.getElementById("audio");
 const audioMajeur = document.getElementById("audioMajeur");
 
-audio.volume = 0.5;
+audio.volume = 0.3;
 audio.play();
 
 bloc_content.style.display = "none";
@@ -21,7 +21,7 @@ btn_action.forEach((button) => {
       setTimeout(function () {
         document.querySelector(".btn-start").style.opacity = 1;
         btn_start.style.display = "flex";
-      }, 30000);
+      }, 20000);
       button.style.display = "none";
       audioBtn.play();
     });

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/img/blobanimation.svg" />
+    <link rel="icon" type="image/png" href="../img/logo.png"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
@@ -15,6 +15,11 @@
       href="https://fonts.googleapis.com/css2?family=Caveat&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <!-- Firebase module -->
     <script
       type="module"
@@ -35,6 +40,11 @@
     <link rel="stylesheet" href="../css/quiz.css" />
   </head>
   <style>
+    #fil {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
     #content {
       display: flex;
       align-items: center;
@@ -45,14 +55,20 @@
       font-size: 1.5rem;
       margin: 1rem 0;
     }
-    /* body {
-      display: flex;
-      flex-direction: row;
-    } */
+    #fil .home:hover {
+      font-weight: bolder;
+      color: var(--color_blue);
+    }
   </style>
 
   <body>
     <div id="content">
+      <div id="fil">
+        <span style="margin-right: 5px">Chapitres :</span>
+        <a href="ChapiteMiseEnContexte.html" class="home"
+          ><i class="fa-solid fa-house"></i
+        ></a>
+      </div>
       <video id="background" playsinline autoplay muted poster="cake.jpg">
         <source src="/video/Chapitre2-Loop.mp4" type="video/webm" />
         Woops votre fureteur ne supporte pas cette vidéo.
@@ -76,11 +92,11 @@
         <div id="answerResults"></div>
 
         <button id="next-btn">Suivant</button>
-        <!-- <p id="score"></p> -->
         <button id="sign-out-btn">Se déconnecter</button>
       </div>
       <audio id="correct-sound" src="../audio/correct_sound.mp3"></audio>
       <audio id="wrong-sound" src="../audio/error_sound.wav"></audio>
+      <audio loop id="audio" src="/audio/PP_projet3_attente.mp3"></audio>
     </div>
     <script type="module">
       import {
@@ -133,6 +149,9 @@
       var nextButton = document.getElementById("next-btn");
       var scoreElement = document.getElementById("score");
       var signOutButton = document.getElementById("sign-out-btn");
+      var audio = document.getElementById("audio");
+      audio.volume = 0.1;
+      audio.play();
 
       var currentQuestionIndex = 0;
       var score = 0;
@@ -161,61 +180,61 @@
           .finally(() => {
             console.log(user);
           });
-        });
-        btnConnexionAlt.addEventListener("click", () => {
-          quizContainer.style.display = "flex";
-          btnConnexion.style.display = "none";
-          btnConnexionAlt.style.display = "none";
-          usernameElement.innerHTML = "Anonyme";
-        });
-        
-        signOutButton.addEventListener("click", function () {
-          location.reload();
-          // signOut(auth)
-          //   .then(() => {
-            //     // Sign-out successful.
-            //     quizContainer.style.display = "none";
-            //     usernameElement.innerHTML = "";
-            //     btnConnexion.style.display = "block";
-            //     btnConnexionAlt.style.display = "block";
-            //     console.log("yepo");
-            //   })
-            //   .catch((error) => {
-              //     // An error happened.
-              //     console.log("nopo");
-              //   });
-            });
-            
-            var questions = [
-              {
-                question: "Question 1: Qu’est-ce que signifie le mot “rictus”",
-                options: ["Une ouverture de la bouche", "Un mouvemenent musculaire"],
-                answer: "Une ouverture de la bouche",
-              },
-              {
-                question:
-                "Question 2: Est-ce que le rictus représente les mêmes émotions que le sourire ?",
-                options: ["Oui", "Non"],
-                answer: "Non",
-              },
-              {
-                question: "Question 3: Quel type de maladie est le rictus ?",
-                options: [
-                  "Une maladie musculaire",
-                  "Une anomalie faciale",
-                  "Ce n'est pas une maladie",
-                ],
+      });
+      btnConnexionAlt.addEventListener("click", () => {
+        quizContainer.style.display = "flex";
+        btnConnexion.style.display = "none";
+        btnConnexionAlt.style.display = "none";
+        usernameElement.innerHTML = "Anonyme";
+      });
+
+      signOutButton.addEventListener("click", function () {
+        location.reload();
+        // signOut(auth)
+        //   .then(() => {
+        //     // Sign-out successful.
+        //     quizContainer.style.display = "none";
+        //     usernameElement.innerHTML = "";
+        //     btnConnexion.style.display = "block";
+        //     btnConnexionAlt.style.display = "block";
+        //     console.log("yepo");
+        //   })
+        //   .catch((error) => {
+        //     // An error happened.
+        //     console.log("nopo");
+        //   });
+      });
+
+      var questions = [
+        {
+          question: "Question 1: Qu’est-ce que signifie le mot “rictus”",
+          options: ["Une ouverture de la bouche", "Un mouvemenent musculaire"],
+          answer: "Une ouverture de la bouche",
+        },
+        {
+          question:
+            "Question 2: Est-ce que le rictus représente les mêmes émotions que le sourire ?",
+          options: ["Oui", "Non"],
+          answer: "Non",
+        },
+        {
+          question: "Question 3: Quel type de maladie est le rictus ?",
+          options: [
+            "Une maladie musculaire",
+            "Une anomalie faciale",
+            "Ce n'est pas une maladie",
+          ],
           answer: "Ce n'est pas une maladie",
         },
         {
           question:
-          "Question 4: Est-ce que les rictus sont toujours involontaires",
+            "Question 4: Est-ce que les rictus sont toujours involontaires",
           options: ["Oui", "Non"],
           answer: "Non",
         },
         {
           question:
-          "Question 5: Pour quel référence le documentaire se nomme rictus ?",
+            "Question 5: Pour quel référence le documentaire se nomme rictus ?",
           options: [
             "En référence à un docteur",
             "En référence à la mère du créateur",
@@ -224,7 +243,7 @@
           answer: "En référence au personnage d’un comics du même nom",
         },
       ];
-      
+
       function loadQuestion() {
         feedbackElement.textContent = "";
         var currentQuestion = questions[currentQuestionIndex];
@@ -238,7 +257,7 @@
           optionButton.addEventListener("click", checkAnswer);
         }
       }
-      
+
       function checkAnswer(event) {
         var selectedOption = event.target.textContent;
         var currentQuestion = questions[currentQuestionIndex];
@@ -261,7 +280,7 @@
         }
         nextButton.disabled = false;
       }
-      
+
       function nextQuestion() {
         currentQuestionIndex++;
         nextButton.style.display = "none";
@@ -271,7 +290,7 @@
           endQuiz();
         }
       }
-      
+
       function endQuiz() {
         answersElement.style.display = "block";
         percent.style.display = "flex";
@@ -290,7 +309,7 @@
         questions[3].answer,
         questions[4].answer,
       ];
-      
+
       function saveAnswer() {
         if (Array.isArray(questions) && questions.length > 0) {
           var quizAnswers = [];
@@ -302,12 +321,12 @@
             };
             quizAnswers.push(quizAnswer);
           }
-          
+
           const quizAnswersRef = collection(db, "quizAnswers");
           quizAnswers.forEach(async (quizAnswer) => {
             await addDoc(quizAnswersRef, quizAnswer);
           });
-          
+
           console.log("Quiz answers saved successfully.");
         } else {
           console.log("Error: questions array is not defined or empty.");
@@ -317,47 +336,45 @@
       // let count;
       const getColl = async () => {
         try {
-          const maColl = await getDocs(collection(db, "quizAnswers")); 
+          const maColl = await getDocs(collection(db, "quizAnswers"));
 
           const documents = maColl.docs.map((doc) => ({
             ...doc.data(),
-            id: doc.id, 
+            id: doc.id,
           }));
-          
-          const totalAnswers = documents.length; 
-          const answerCounts = {}; 
-          
+
+          const totalAnswers = documents.length;
+          const answerCounts = {};
+
           documents.forEach((doc) => {
-            const answer = doc.answer; 
+            const answer = doc.answer;
             if (answerCounts.hasOwnProperty(answer)) {
               answerCounts[answer] += 1;
             } else {
               answerCounts[answer] = 0;
             }
           });
-          
-          const answerResultsDiv = document.getElementById("answerResults"); 
-          
+
+          const answerResultsDiv = document.getElementById("answerResults");
+
           let results = "";
           for (let answer in answerCounts) {
             const count = answerCounts[answer];
             const percent = (count / totalAnswers) * 100;
-            results += `<p>Réponses : ${answer}, Pourcentage de selection: ${Number.parseFloat(percent).toFixed(2)}%</p>`;
+            results += `<p>Réponses : ${answer}, Pourcentage de selection: ${Number.parseFloat(
+              percent
+            ).toFixed(2)}%</p>`;
           }
-          
+
           answerResultsDiv.innerHTML = results; // Update innerHTML with the calculated values
         } catch (error) {
           console.error("Erreur lors de la requête du doc:", error);
         }
       };
-      
-      
-      
+
       nextButton.addEventListener("click", nextQuestion);
-      
-      
+
       loadQuestion();
-      </script>
+    </script>
   </body>
-  </html>
-  
+</html>

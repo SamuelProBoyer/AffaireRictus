@@ -27,7 +27,7 @@ const frequencyData = new Uint8Array(numBars);
 
 // Fonction qui joue laudio
 function startAudio() {
-    audio.volume = 0.1;
+    audio.volume = 0.3;
     audio.play();
 }
 
