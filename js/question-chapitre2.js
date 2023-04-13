@@ -142,79 +142,108 @@ function typeWriter() {
   }
   // Involontaire
   const wordElement = document.getElementById("word");
-  wordElement.addEventListener("click", function () {
-    console.log("Mot cliquer !");
-
-    wordElement.classList.remove("shine");
-    wordElement2.classList.add("shine2");
-    phraseDebut.style.display === "none";
-    
-    if (typingText.style.display === "none") {
-      typingText.style.display = "block";
-      wordElement.style.color = "white";
-      wordElement.style.fontWeight = "bold";
-      typingText2.style.display = "none";
-      typingText3.style.display = "none";
-      typingText4.style.display = "none";
-    }
-  });
+  if (wordElement) {
+    let jouerSon = false;
+    wordElement.addEventListener("click", function () {
+      console.log("Mot cliquer !");
+      if (!jouerSon) { 
+        audioMajeur.src = "../audio/5Dinvolontaire.wav";
+        audioMajeur.play();
+        jouerSon = true;
+      }
+      
+      wordElement.classList.remove("shine");
+      wordElement2.classList.add("shine2");
+      phraseDebut.style.display === "none";
+      
+      if (typingText.style.display === "none") {
+        typingText.style.display = "block";
+        wordElement.style.color = "white";
+        wordElement.style.fontWeight = "bold";
+        typingText2.style.display = "none";
+        typingText3.style.display = "none";
+        typingText4.style.display = "none";
+      }
+    });
+  }
   //  art
   const wordElement2 = document.getElementById("word2");
-  wordElement2.addEventListener("click", function () {
-    console.log("Mot cliquer !"); 
-
-    wordElement2.classList.remove("shine2");
-
-    phraseDebut.style.display === "none";
-    wordElement.classList.add("shine");
-    wordElement3.classList.add("shine3");
-    wordElement4.classList.add("shine4");
-    
-    
-    if (typingText2.style.display === "none") {
-      typingText2.style.display = "block";
-      wordElement2.style.color = "white";
-      wordElement2.style.fontWeight = "bold";
-      typingText.style.display = "none";
-      typingText3.style.display = "none";
-      typingText4.style.display = "none";
-    }
-  });
+  if (wordElement2) {
+    let jouerSon = false;
+    wordElement2.addEventListener("click", function () {
+      console.log("Mot cliquer !"); 
+      if (!jouerSon) { 
+        audioMajeur.src = "../audio/5Aart.wav";
+        audioMajeur.play();
+        jouerSon = true;
+      }
+      
+      wordElement2.classList.remove("shine2");
+      
+      phraseDebut.style.display === "none";
+      wordElement.classList.add("shine");
+      wordElement3.classList.add("shine3");
+      wordElement4.classList.add("shine4");
+      
+      
+      if (typingText2.style.display === "none") {
+        typingText2.style.display = "block";
+        wordElement2.style.color = "white";
+        wordElement2.style.fontWeight = "bold";
+        typingText.style.display = "none";
+        typingText3.style.display = "none";
+        typingText4.style.display = "none";
+      }
+    });
+  }
   // culture
   const wordElement3 = document.getElementById("word3");
-  wordElement3.addEventListener("click", function () {
-    console.log("Mot cliquer !"); 
-    // videoRoller.src = "../video/Chapitre1-Art-V2.mp4";
-
-    wordElement3.classList.remove("shine3");
-    wordElement.classList.add("shine");
-    wordElement2.classList.add("shine2");
-    wordElement4.classList.add("shine4");
-
-    phraseDebut.style.display === "none";
-
-    if (typingText3.style.display === "none") {
-      typingText3.style.display = "block";
-      wordElement3.style.color = "white";
-      wordElement3.style.fontWeight = "bold";
-      typingText.style.display = "none";
-      typingText2.style.display = "none";
-      typingText4.style.display = "none";
-    }
-  });
+  if (wordElement3) {
+    let jouerSon = false;
+    wordElement3.addEventListener("click", function () {
+      console.log("Mot cliquer !"); 
+      if (!jouerSon) { 
+        audioMajeur.src = "../audio/5Bculture.wav";
+        audioMajeur.play();
+        jouerSon = true;
+      }
+      
+      wordElement3.classList.remove("shine3");
+      wordElement.classList.add("shine");
+      wordElement2.classList.add("shine2");
+      wordElement4.classList.add("shine4");
+      
+      phraseDebut.style.display === "none";
+      
+      if (typingText3.style.display === "none") {
+        typingText3.style.display = "block";
+        wordElement3.style.color = "white";
+        wordElement3.style.fontWeight = "bold";
+        typingText.style.display = "none";
+        typingText2.style.display = "none";
+        typingText4.style.display = "none";
+      }
+    });
+  }
   // science
   const wordElement4 = document.getElementById("word4");
-  wordElement4.addEventListener("click", function () {
-    console.log("Mot cliquer !"); 
-    // videoRoller.src = "../video/Chapitre1-Art-V2.mp4";
-
-    wordElement4.classList.remove("shine4");
+  if (wordElement4) {
+    let jouerSon = false;
+    wordElement4.addEventListener("click", function () {
+      console.log("Mot cliquer !"); 
+      if (!jouerSon) { 
+        audioMajeur.src = "../audio/5Cscience.wav";
+        audioMajeur.play();
+        jouerSon = true;
+      }
+      
+      wordElement4.classList.remove("shine4");
     wordElement.classList.add("shine");
     wordElement2.classList.add("shine2");
     wordElement3.classList.add("shine3");
-
+    
     phraseDebut.style.display === "none";
-
+    
     if (typingText4.style.display === "none") {
       typingText4.style.display = "block";
       wordElement4.style.color = "white";
@@ -225,13 +254,12 @@ function typeWriter() {
     }
   });
 }
+}
 
 function typeWriterPlus() {
   if (typingText.style.display === "block" && interaction2Writing === false && interaction3Writing === false && interaction4Writing === false) {
     if (j < phraseDetails.length) {
       typingText.innerHTML += phraseDetails.charAt(j);
-
-      
 
       j++;
 
@@ -290,7 +318,7 @@ function typeWriterPlus4() {
   }
 }
 
-const intervalId = setInterval(typeWriterPlus, 100);
-const interval2Id = setInterval(typeWriterPlus2, 100);
-const interval3Id = setInterval(typeWriterPlus3, 100);
-const interval4Id = setInterval(typeWriterPlus4, 100);
+const intervalId = setInterval(typeWriterPlus, 48);
+const interval2Id = setInterval(typeWriterPlus2, 48);
+const interval3Id = setInterval(typeWriterPlus3, 48);
+const interval4Id = setInterval(typeWriterPlus4, 48);
