@@ -54,11 +54,11 @@
       let phraseEnCours = "";
       let phraseEnCours2 = "";
 
-      let string = "Malheureusement, cette maladie n’est pas connue de tous et par conséquent, les rictus peuvent avoir un impact significatif sur la vie quotidienne des personnes atteintes. Les traitements pour les rictus peuvent inclure des médicaments, des interventions chirurgicales et d'autres thérapies pour soulager les symptômes et améliorer la qualité de vie. Afin de mieux comprendre les défis associés à cette maladie, l'équipe de l'affaire Rictus vous fera découvrir la vie d'une personne atteinte de rictus involontaires. ";
+      let string = "Malheureusement, cette maladie n'est pas connue de tous et, par conséquent, les rictus peuvent avoir un impact significatif sur la vie quotidienne des personnes atteintes. Les traitements pour les rictus peuvent inclure des médicaments, des interventions chirurgicales et d'autres thérapies pour soulager les symptômes et améliorer la qualité de vie. Afin de mieux comprendre les défis associés à cette maladie, l'équipe de l'affaire Rictus vous fera découvrir la vie d'une personne atteinte de rictus involontaires. ";
       
       // Interaction vie quotidienne
       const typingText = document.getElementById("typing-text1");
-      const phraseDetails = "La vie quotidienne est impacté notamment sur leur capacité à interagir socialement et à communiquer efficacement. "
+      const phraseDetails = "La vie quotidienne est impactée notamment sur leur capacité à interagir socialement et à communiquer efficacement. "
       const interaction1 = "vie";
       let x1 = 0;
       let interaction1Writing = false;

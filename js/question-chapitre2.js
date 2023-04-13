@@ -67,7 +67,7 @@ const interaction3 = "culture";
 const interaction4 = "science";
 
 const typingText = document.getElementById("typing-text");
-const phraseDetails = "Les rictus volontaires sont souvent considérés comme une représentation humoristique exagérée d'une émotion. ";
+const phraseDetails = "es rictus volontaires sont souvent considérés comme une représentation humoristique exagérée d'une émotion. ";
 let j = 0;
 
 const typingText2 = document.getElementById("typing-text2");

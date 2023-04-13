@@ -24,7 +24,7 @@ const phraseDebut = document.getElementById("phraseDebut");
     let x1 = 0;
 
     
-    let string2 = "En conclusion, il faut savoir que le rictus ne représente pas toujours les mauvaises intentions d'une personne. Parfois, ce type de réaction n'est pas créé par des mauvaises intentions, mais plutôt par un effet d'une maladie malheureusement peu contrôlable voir pas du tout. Il faut chercher à être compréhensif envers ces personnes qui vivent des vies aussi normales que les autres, avec des familles, des émotions et des amis tout aussi compréhensibles que les autres. "
+    let string2 = "En conclusion, il faut savoir que le rictus ne représente pas toujours de mauvaises intentions chez une personne. Parfois, ce type de réaction n'est pas causé par de mauvaises intentions, mais plutôt par l'effet d'une maladie malheureusement peu contrôlable voire pas du tout. Il faut chercher à être compréhensif envers ces personnes qui vivent des vies aussi normales que les autres, avec des familles, des émotions et des amis tout aussi compréhensibles que les autres. "
     let i = 0;
     let j = 0;
 
@@ -47,7 +47,7 @@ const phraseDebut = document.getElementById("phraseDebut");
             phraseDebut.innerHTML = phraseEnCours + "</span>";
           }
           else {
-            let c1 = phraseEnCours.replace(interaction1, "mécanisme</span>");
+            let c1 = phraseEnCours.replace(interaction1, "mécanismes</span>");
             phraseDebut.innerHTML = c1;
           }
         }
