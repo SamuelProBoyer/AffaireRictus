@@ -5,8 +5,8 @@ musique.volume = 0.080;
 musique.play();
 
 var sources = [
-  "../video/Chapitre3-Histoire-2.mp4",
   "../video/Histoire-2-V2.mp4",
+  "../video/Chapitre3-Histoire-3.mp4",
   "../video/Chapitre3-Histoire-4.mp4",
   "../video/Chapitre3-Histoire-5.mp4",
   "../video/Chapitre3-Histoire-6.mp4",

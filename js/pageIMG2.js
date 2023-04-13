@@ -29,8 +29,9 @@ const wrongButtons = document.querySelectorAll(".wrong");
       setTimeout(function () {
         // document.location.href = "/pageIMG2.html";
         // document.location.href = "/Chapitres/chapitre3.html";
-        video.src = "video/Chapitre2-Fin.mp4";
-        audio.pause();
+        video.src = "video/Chapitre2-Fin-V2.mp4";
+        audio.src = "/audio/PP_projet3_attente.mp3"
+        audio.play();
         audioMajeur.src = "/audio/13TestHard.wav";
         audioMajeur.play(); 
       }, 1000);
