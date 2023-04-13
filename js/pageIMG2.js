@@ -15,20 +15,16 @@ const wrongButtons = document.querySelectorAll(".wrong");
 
     wrongButtons.forEach(button => {
       button.addEventListener("click", async () => {
-        console.log("Wrong one !");
         errorSound.play();
       });
     });
 
     video.style.display = "none";
     correctButton.addEventListener("click", () => {
-      console.log("Bravo !");
       image.style.display = "none";
       video.style.display = "block";
       correctSound.play();
       setTimeout(function () {
-        // document.location.href = "/pageIMG2.html";
-        // document.location.href = "/Chapitres/chapitre3.html";
         video.src = "video/Chapitre2-Fin.mp4";
         audio.pause();
         audioMajeur.src = "/audio/13TestHard.wav";

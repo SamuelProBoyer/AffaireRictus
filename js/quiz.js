@@ -9,10 +9,8 @@ var firebaseConfig = {
   };
   firebase.initializeApp(firebaseConfig);
   
-  // Get a reference to the Firestore database
   var db = firebase.firestore();
   
-  // Get elements from HTML
   var questionElement = document.getElementById('question');
   var optionsElement = document.getElementById('options');
   var feedbackElement = document.getElementById('feedback');
@@ -20,24 +18,21 @@ var firebaseConfig = {
   var scoreElement = document.getElementById('score');
   var signOutButton = document.getElementById('sign-out-btn');
   
-  // Create variables to keep track of quiz state
   var currentQuestionIndex = 0;
   var score = 0;
   
-  // Create variables for sound effects
   var correctSound = new Audio('correct.mp3');
   var wrongSound = new Audio('wrong.mp3');
   
-  // Add event listener for sign out button
   signOutButton.addEventListener('click', function() {
     firebase.auth().signOut();
   });
   
-  // Function to load question and options
+ 
   function loadQuestion() {
-    // Clear feedback
+    
     feedbackElement.textContent = '';
-    // Get current question from the questions array
+    nextButton.style.display = "none";
     var currentQuestion = questions[currentQuestionIndex];
     // Update question and options in HTML
     questionElement.textContent = currentQuestion.question;
@@ -51,7 +46,6 @@ var firebaseConfig = {
     }
   }
   
-  // Function to check selected answer
   function checkAnswer(event) {
     var selectedOption = event.target.textContent;
     var currentQuestion = questions[currentQuestionIndex];
@@ -63,26 +57,23 @@ var firebaseConfig = {
       feedbackElement.textContent = 'Wrong!';
       wrongSound.play();
     }
-    // Disable option buttons after answering
     var optionButtons = optionsElement.querySelectorAll('.option-btn');
     for (var i = 0; i < optionButtons.length; i++) {
       optionButtons[i].disabled = true;
     }
-    // Show next button
     nextButton.disabled = false;
   }
-  
-  // Function to load next question or end the quiz
+ 
   function nextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
+      nextButton.style.display = "flex";
       loadQuestion();
     } else {
       endQuiz();
     }
   }
   
-  // Function to end the quiz and display score
   function endQuiz() {
     questionElement.textContent = 'Quiz completed!';
     optionsElement.innerHTML = '';
@@ -91,9 +82,8 @@ var firebaseConfig = {
     nextButton.disabled = true;
   }
   
-  // Add event listener for next button
   nextButton.addEventListener('click', nextQuestion);
   
-  // Load the first question
+
   loadQuestion();
   

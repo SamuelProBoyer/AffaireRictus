@@ -1,455 +1,363 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/img/blobanimation.svg" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Firebase module -->
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"
+    ></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"
+    ></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"
+    ></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/x-icon" href="/img/blobanimation.svg" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet" />
-  <script type="module" src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
-  <script type="module" src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"></script>
-  <!-- <script type="module" src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"></script> -->
-  <!-- <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script> -->
-  <script type="module" src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"></script>
+    <title>Quiz Rictus</title>
 
-  <title>Quiz Rictus</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/quiz.css" />
+  </head>
+  <style>
+    #content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    #answerResults p {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+    }
+    /* body {
+      display: flex;
+      flex-direction: row;
+    } */
+  </style>
 
-  <!-- <link rel="stylesheet" href="style.css" /> -->
-</head>
-<style>
-  :root {
-    --color_yellow: #fee886;
-    --color_red: #cc3a3d;
-    --color_green: #306437;
-    --color_blue: #8ab8a2;
-  }
+  <body>
+    <div id="content">
+      <video id="background" playsinline autoplay muted poster="cake.jpg">
+        <source src="/video/Chapitre2-Loop.mp4" type="video/webm" />
+        Woops votre fureteur ne supporte pas cette vidéo.
+      </video>
+      <h1 id="title">Quiz Rictus</h1>
+      <h2 id="username"></h2>
+      <button id="btn-connexion">Se connecter</button>
+      <button id="btn-connexionAlternatif">Je n'ai pas Google..</button>
+      <div id="quiz-container">
+        <div id="question-container">
+          <p id="question"></p>
+          <ul id="options">
+            <li><button class="option-btn"></button></li>
+            <li><button class="option-btn"></button></li>
+          </ul>
+        </div>
+        <div id="feedback-container">
+          <p id="feedback"></p>
+        </div>
+        <p id="percent"></p>
+        <div id="answerResults"></div>
 
-  body {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #222;
-    font-family: "Satisfy", sans-serif;
-  }
-
-  #quiz-container {
-    background-color: rgba(34, 34, 34, 0.678);
-    padding: 20px;
-    max-width: 500px;
-    width: 100%;
-    text-align: center;
-  }
-
-  #title {
-    font-size: 3rem;
-    font-family: "Caveat", sans-serif;
-    color: #fff;
-  }
-
-  #username {
-    font-size: 24px;
-    color: #fff;
-  }
-
-  #btn-connexion,
-  #next-btn,
-  #sign-out-btn {
-    font-family: "Satisfy", sans-serif;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: var(--color_blue);
-    color: #ffffff;
-    border-radius: .5rem;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
-  
-  #btn-connexion:hover {
-    background-color: var(--color_green);
-
-  }
-  #next-btn:hover {
-    background-color: var(--color_green);
-
-  }
-
-  #question-container {
-    margin-top: 40px;
-  }
-
-  #question {
-    font-size: 2rem;
-    font-family: "Caveat", sans-serif;
-    color: #fff;
-  }
-
-  #options {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 20px;
-  }
-
-  .option-btn {
-    font-family: "Caveat", sans-serif;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #f0f0f0;
-    border-radius: .5rem;
-    color: #000000;
-    border: 1px solid #000000;
-    cursor: pointer;
-    font-size: 2rem;
-    width: 100%;
-  }
-
-  .option-btn:hover {
-    background-color: #dcdcdc;
-  }
-
-  #feedback-container {
-    margin-top: 20px;
-  }
-
-  #feedback {
-    font-size: 1.5rem;
-    color: #fff;
-    font-family: "Caveat", sans-serif;
-  }
-
-  #score,
-  #percent {
-    margin-top: 20px;
-    font-size: 2rem;
-    color: #fff;
-    font-family: "Caveat", sans-serif;
-  }
-
-  #sign-out-btn {
-    margin-top: 40px;
-    background-color: #dc3545;
-  }
-  #sign-out-btn:hover {
-    margin-top: 40px;
-    background-color: #dc35466b;
-  }
-
-  #btn-connexionAlternatif {
-    margin-top: 15px;
-    font-family: "Caveat", sans-serif;
-    font-size: 1rem;
-    line-height: 2rem;
-    color: var(--color_red);
-    background-color: transparent;
-    border: none;
-    border-radius: .5rem;
-    cursor: pointer;
-  }
-  #btn-connexionAlternatif:hover {
-  
-    color: #fff;
-   
-  }
-</style>
-
-<body>
-  <h1 id="title">Quiz Rictus</h1>
-  <h2 id="username"></h2>
-  <button id="btn-connexion">Se connecter</button>
-  <button id="btn-connexionAlternatif">Je n'ai pas Google..</button>
-  <div id="quiz-container">
-    <div id="question-container">
-      <p id="question"></p>
-      <ul id="options">
-        <li><button class="option-btn"></button></li>
-        <li><button class="option-btn"></button></li>
-      </ul>
+        <button id="next-btn">Suivant</button>
+        <!-- <p id="score"></p> -->
+        <button id="sign-out-btn">Se déconnecter</button>
+      </div>
+      <audio id="correct-sound" src="../audio/correct_sound.mp3"></audio>
+      <audio id="wrong-sound" src="../audio/error_sound.wav"></audio>
     </div>
-    <div id="feedback-container">
-      <p id="feedback"></p>
-    </div>
-    <p id="percent"></p>
-    <button id="next-btn">Suivant</button>
-    <p id="score"></p>
-    <button id="sign-out-btn">Se déconnecter</button>
-  </div>
-  <audio id="correct-sound" src="../audio/correct_sound.mp3"></audio>
-  <audio id="wrong-sound" src="../audio/error_sound.wav"></audio>
-  <script type="module">
+    <script type="module">
+      import {
+        getAuth,
+        signInWithPopup,
+        GoogleAuthProvider,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        getDocs,
+        setDoc,
+        doc,
+      } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
+      import {
+        getDatabase,
+        ref,
+        push,
+        update,
+        set,
+      } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"; // Import the necessary database functions
+      const firebaseConfig = {
+        apiKey: "AIzaSyCgL7qiacZTLcw19bgMAbfQEUCsyow8gOQ",
+        authDomain: "affairerictus.firebaseapp.com",
+        projectId: "affairerictus",
+        databaseURL: "https://affairerictus-default-rtdb.firebaseio.com/",
+        storageBucket: "affairerictus.appspot.com",
+        messagingSenderId: "625025844556",
+        appId: "1:625025844556:web:d65766db87163734e0fbe9",
+      };
 
-    import {
-      getAuth,
-      signInWithPopup,
-      GoogleAuthProvider,
-      signOut,
-    } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js';
-    import { getFirestore, collection, addDoc, getDocs, setDoc, doc } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js';
-    import { getDatabase, ref, push, update, set } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js'; // Import the necessary database functions
-    const firebaseConfig = {
-      apiKey: "AIzaSyCgL7qiacZTLcw19bgMAbfQEUCsyow8gOQ",
-      authDomain: "affairerictus.firebaseapp.com",
-      projectId: "affairerictus",
-      databaseURL: "https://affairerictus-default-rtdb.firebaseio.com/",
-      storageBucket: "affairerictus.appspot.com",
-      messagingSenderId: "625025844556",
-      appId: "1:625025844556:web:d65766db87163734e0fbe9",
-    };
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      // const database = getDatabase(app);
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const database = getDatabase(app);
+      var questionElement = document.getElementById("question");
+      var answersElement = document.getElementById("answerResults");
+      var percent = document.getElementById("percent");
+      var percentBA = document.querySelector(".percentBaseAnswers");
+      var usernameElement = document.getElementById("username");
+      var btnConnexion = document.getElementById("btn-connexion");
+      var btnConnexionAlt = document.getElementById("btn-connexionAlternatif");
+      var quizContainer = document.getElementById("quiz-container");
+      var title = document.getElementById("title");
+      var optionsElement = document.getElementById("options");
+      var feedbackElement = document.getElementById("feedback");
+      var nextButton = document.getElementById("next-btn");
+      var scoreElement = document.getElementById("score");
+      var signOutButton = document.getElementById("sign-out-btn");
 
+      var currentQuestionIndex = 0;
+      var score = 0;
 
+      var correctSound = new Audio("../audio/correct_sound.mp3");
+      var wrongSound = new Audio("../audio/error_sound.wav");
 
+      const provider = new GoogleAuthProvider();
+      var auth = getAuth();
+      let user;
 
-    var questionElement = document.getElementById("question");
-    var percent = document.getElementById("percent");
-    var usernameElement = document.getElementById("username");
-    var btnConnexion = document.getElementById("btn-connexion");
-    var btnConnexionAlt = document.getElementById("btn-connexionAlternatif");
-    var quizContainer = document.getElementById("quiz-container");
-    var title = document.getElementById("title");
-    var optionsElement = document.getElementById("options");
-    var feedbackElement = document.getElementById("feedback");
-    var nextButton = document.getElementById("next-btn");
-    var scoreElement = document.getElementById("score");
-    var signOutButton = document.getElementById("sign-out-btn");
-
-    var currentQuestionIndex = 0;
-    var score = 0;
-
-    var correctSound = new Audio("../audio/correct_sound.mp3");
-    var wrongSound = new Audio("../audio/error_sound.wav");
-
-
-    const provider = new GoogleAuthProvider();
-    var auth = getAuth();
-    let user;
-
-    quizContainer.style.display = "none";
-    btnConnexion.addEventListener("click", () => {
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          // Assign the user value
-          user = result.user;
-          quizContainer.style.display = "block";
+      quizContainer.style.display = "none";
+      answersElement.style.display = "none";
+      percent.style.display = "none";
+      btnConnexion.addEventListener("click", () => {
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            user = result.user;
+            quizContainer.style.display = "flex";
+            btnConnexion.style.display = "none";
+            nextButton.style.display = "none";
+            btnConnexionAlt.style.display = "none";
+            usernameElement.innerHTML = user.displayName;
+          })
+          .catch((error) => {})
+          .finally(() => {
+            console.log(user);
+          });
+        });
+        btnConnexionAlt.addEventListener("click", () => {
+          quizContainer.style.display = "flex";
           btnConnexion.style.display = "none";
           btnConnexionAlt.style.display = "none";
-          usernameElement.innerHTML = user.displayName;
-        })
-        .catch((error) => {
-        })
-        .finally(() => {
-          console.log(user);
+          usernameElement.innerHTML = "Anonyme";
         });
-    });
-    btnConnexionAlt.addEventListener("click", () => {
-
-      quizContainer.style.display = "block";
-      btnConnexion.style.display = "none";
-      btnConnexionAlt.style.display = "none";
-      usernameElement.innerHTML = "Anonyme";
-
-    });
-
-
-
-
-    signOutButton.addEventListener("click", function () {
-      location.reload();
-      // signOut(auth)
-      //   .then(() => {
-      //     // Sign-out successful.
-      //     quizContainer.style.display = "none";
-      //     usernameElement.innerHTML = "";
-      //     btnConnexion.style.display = "block";
-      //     btnConnexionAlt.style.display = "block";
-      //     console.log("yepo");
-      //   })
-      //   .catch((error) => {
-      //     // An error happened.
-      //     console.log("nopo");
-      //   });
-    });
-
-
-    var questions = [
-      {
-        question: "Question 1: Qu’est-ce que signifie le mot “rictus”",
-        options: ["Une ouverture de la bouche", "Un mouvemenent musculaire"],
-        answer: "Une ouverture de la bouche",
-      },
-      {
-        question:
-          "Question 2: Est-ce que le rictus représente les mêmes émotions que le sourire ?",
-        options: ["Oui", "Non"],
-        answer: "Non",
-      },
-      {
-        question: "Question 3: Quel type de maladie est le rictus ?",
-        options: [
-          "Une maladie musculaire",
-          "Une anomalie faciale",
-          "Ce n'est pas une maladie",
-        ],
-        answer: "Ce n'est pas une maladie",
-      },
-      {
-        question:
+        
+        signOutButton.addEventListener("click", function () {
+          location.reload();
+          // signOut(auth)
+          //   .then(() => {
+            //     // Sign-out successful.
+            //     quizContainer.style.display = "none";
+            //     usernameElement.innerHTML = "";
+            //     btnConnexion.style.display = "block";
+            //     btnConnexionAlt.style.display = "block";
+            //     console.log("yepo");
+            //   })
+            //   .catch((error) => {
+              //     // An error happened.
+              //     console.log("nopo");
+              //   });
+            });
+            
+            var questions = [
+              {
+                question: "Question 1: Qu’est-ce que signifie le mot “rictus”",
+                options: ["Une ouverture de la bouche", "Un mouvemenent musculaire"],
+                answer: "Une ouverture de la bouche",
+              },
+              {
+                question:
+                "Question 2: Est-ce que le rictus représente les mêmes émotions que le sourire ?",
+                options: ["Oui", "Non"],
+                answer: "Non",
+              },
+              {
+                question: "Question 3: Quel type de maladie est le rictus ?",
+                options: [
+                  "Une maladie musculaire",
+                  "Une anomalie faciale",
+                  "Ce n'est pas une maladie",
+                ],
+          answer: "Ce n'est pas une maladie",
+        },
+        {
+          question:
           "Question 4: Est-ce que les rictus sont toujours involontaires",
-        options: ["Oui", "Non"],
-        answer: "Non",
-      },
-      {
-        question:
+          options: ["Oui", "Non"],
+          answer: "Non",
+        },
+        {
+          question:
           "Question 5: Pour quel référence le documentaire se nomme rictus ?",
-        options: [
-          "En référence à un docteur",
-          "En référence à la mère du créateur",
-          "En référence au personnage d’un comics du même nom",
-        ],
-        answer: "En référence au personnage d’un comics du même nom",
-      },
-    ];
-
-    function loadQuestion() {
-      feedbackElement.textContent = "";
-      var currentQuestion = questions[currentQuestionIndex];
-      questionElement.textContent = currentQuestion.question;
-      optionsElement.innerHTML = "";
-      for (var i = 0; i < currentQuestion.options.length; i++) {
-        var optionButton = document.createElement("button");
-        optionButton.classList.add("option-btn");
-        optionButton.textContent = currentQuestion.options[i];
-        optionsElement.appendChild(optionButton);
-        optionButton.addEventListener("click", checkAnswer);
-        console.log(question.answer);
-      }
-    }
-
-    function checkAnswer(event) {
-      var selectedOption = event.target.textContent;
-      var currentQuestion = questions[currentQuestionIndex];
-      if (user) {
-        saveAnswer();
-
-      }
-      if (selectedOption === currentQuestion.answer) {
-        feedbackElement.textContent = "Bravo !";
-        score++;
-        correctSound.play();
-      } else {
-        feedbackElement.textContent = "Et non...";
-        wrongSound.play();
-      }
-      var optionButtons = optionsElement.querySelectorAll(".option-btn");
-      for (var i = 0; i < optionButtons.length; i++) {
-        optionButtons[i].disabled = true;
-      }
-      nextButton.disabled = false;
-    }
-
-    function nextQuestion() {
-      currentQuestionIndex++;
-      if (currentQuestionIndex < questions.length) {
-        loadQuestion();
-      } else {
-        endQuiz();
-      }
-    }
-
-
-    function endQuiz() {
-      questionElement.textContent = "Quiz terminé !";
-      optionsElement.innerHTML = "";
-      feedbackElement.textContent = "";
-      nextButton.disabled = true;
-      const percentage = (score / questions.length) * 100;
-      percent.innerHTML = `Pourcentage de bonnes reponses: ${percentage}%`;
-      // checkPercent();
-    }
-    var quizAnswerKey = [questions[0].answer, questions[1].answer, questions[2].answer, questions[3].answer, questions[4].answer];
-    // var databaseRef = db.database().ref('quizQuestions');
-
-   
-
-
-    function saveAnswer() {
-      if (Array.isArray(questions) && questions.length > 0) {
-        var quizAnswers = [];
-        for (var i = 0; i < questions.length; i++) {
-          var quizAnswer = {
-            user: user.uid, 
-            answer: questions[i].answer, 
-            timestamp: new Date() 
-          };
-          quizAnswers.push(quizAnswer);
+          options: [
+            "En référence à un docteur",
+            "En référence à la mère du créateur",
+            "En référence au personnage d’un comics du même nom",
+          ],
+          answer: "En référence au personnage d’un comics du même nom",
+        },
+      ];
+      
+      function loadQuestion() {
+        feedbackElement.textContent = "";
+        var currentQuestion = questions[currentQuestionIndex];
+        questionElement.textContent = currentQuestion.question;
+        optionsElement.innerHTML = "";
+        for (var i = 0; i < currentQuestion.options.length; i++) {
+          var optionButton = document.createElement("button");
+          optionButton.classList.add("option-btn");
+          optionButton.textContent = currentQuestion.options[i];
+          optionsElement.appendChild(optionButton);
+          optionButton.addEventListener("click", checkAnswer);
         }
-
-  
-        const quizAnswersRef = collection(db, 'quizAnswers'); 
-        quizAnswers.forEach(async (quizAnswer) => {
-          await addDoc(quizAnswersRef, quizAnswer); 
-        });
-
-        console.log('Quiz answers saved successfully.');
-      } else {
-        console.log('Error: questions array is not defined or empty.');
       }
-    }
+      
+      function checkAnswer(event) {
+        var selectedOption = event.target.textContent;
+        var currentQuestion = questions[currentQuestionIndex];
+        if (user) {
+          saveAnswer();
+        }
+        if (selectedOption === currentQuestion.answer) {
+          feedbackElement.textContent = "Bravo !";
+          score++;
+          nextButton.style.display = "flex";
+          correctSound.play();
+        } else {
+          feedbackElement.textContent = "Et non...";
+          nextButton.style.display = "flex";
+          wrongSound.play();
+        }
+        var optionButtons = optionsElement.querySelectorAll(".option-btn");
+        for (var i = 0; i < optionButtons.length; i++) {
+          optionButtons[i].disabled = true;
+        }
+        nextButton.disabled = false;
+      }
+      
+      function nextQuestion() {
+        currentQuestionIndex++;
+        nextButton.style.display = "none";
+        if (currentQuestionIndex < questions.length) {
+          loadQuestion();
+        } else {
+          endQuiz();
+        }
+      }
+      
+      function endQuiz() {
+        answersElement.style.display = "block";
+        percent.style.display = "flex";
+        getColl();
+        questionElement.textContent = "Quiz terminé !";
+        optionsElement.innerHTML = "";
+        feedbackElement.textContent = "";
+        nextButton.disabled = true;
+        const percentage = (score / questions.length) * 100;
+        percent.innerHTML = `Pourcentage de bonnes réponses: ${percentage}%`;
+      }
+      var quizAnswerKey = [
+        questions[0].answer,
+        questions[1].answer,
+        questions[2].answer,
+        questions[3].answer,
+        questions[4].answer,
+      ];
+      
+      function saveAnswer() {
+        if (Array.isArray(questions) && questions.length > 0) {
+          var quizAnswers = [];
+          for (var i = 0; i < questions.length; i++) {
+            var quizAnswer = {
+              user: user.uid,
+              answer: questions[i].answer,
+              timestamp: new Date(),
+            };
+            quizAnswers.push(quizAnswer);
+          }
+          
+          const quizAnswersRef = collection(db, "quizAnswers");
+          quizAnswers.forEach(async (quizAnswer) => {
+            await addDoc(quizAnswersRef, quizAnswer);
+          });
+          
+          console.log("Quiz answers saved successfully.");
+        } else {
+          console.log("Error: questions array is not defined or empty.");
+        }
+      }
+      // let answer;
+      // let count;
+      const getColl = async () => {
+        try {
+          const maColl = await getDocs(collection(db, "quizAnswers")); 
 
-
-    // var collectionName = "quizAnswers";
-    // var collectionRef = db.collection(collectionName);
-    // Fetch all documents in the collection
-    // collection("quizAnswers").get()
-    // .then(function(querySnapshot) {
-    //   querySnapshot.forEach(function(doc) {
-    //     // Document data
-    //     var documentData = doc.data();
-    //     console.log("Document data for document ID", doc.id, ":", documentData);
-    //   });
-    // })
-    // .catch(function(error) {
-    //   console.log("Error getting documents:", error);
-    // });
-
-
-
-
-
-
-    //   function checkPercent(){
-    //       const userResponsesRef = collection(db,"userResponses");
-    //       const userResponsesQuery = userResponsesRef.where("userId", "==", user);
-    //       const userResponsesSnapshot =  userResponsesQuery.get();
-    //       const userResponses = userResponsesSnapshot.docs.map((doc) => doc.data());
-
-    //       // Retrieve quiz questions from Firestore
-    //       const quizQuestionsRef = collection(db,"quizQuestions");
-    //       const quizQuestionsSnapshot =  quizQuestionsRef.get();
-    //       const quizQuestions = quizQuestionsSnapshot.docs.map((doc) => doc.data());
-
-    //       // Calculate percentage of correct answers
-    //       const totalQuestions = quizQuestions.length;
-    //       const correctAnswers = userResponses.filter(
-    //         (response) => response.userAnswer === response.correctAnswer
-    //       ).length;
-
-    //   }
-
-    nextButton.addEventListener("click", nextQuestion);
-
-    loadQuestion();
-  </script>
-</body>
-
-</html>
+          const documents = maColl.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id, 
+          }));
+          
+          const totalAnswers = documents.length; 
+          const answerCounts = {}; 
+          
+          documents.forEach((doc) => {
+            const answer = doc.answer; 
+            if (answerCounts.hasOwnProperty(answer)) {
+              answerCounts[answer] += 1;
+            } else {
+              answerCounts[answer] = 0;
+            }
+          });
+          
+          const answerResultsDiv = document.getElementById("answerResults"); 
+          
+          let results = "";
+          for (let answer in answerCounts) {
+            const count = answerCounts[answer];
+            const percent = (count / totalAnswers) * 100;
+            results += `<p>Réponses : ${answer}, Pourcentage de selection: ${Number.parseFloat(percent).toFixed(2)}%</p>`;
+          }
+          
+          answerResultsDiv.innerHTML = results; // Update innerHTML with the calculated values
+        } catch (error) {
+          console.error("Erreur lors de la requête du doc:", error);
+        }
+      };
+      
+      
+      
+      nextButton.addEventListener("click", nextQuestion);
+      
+      
+      loadQuestion();
+      </script>
+  </body>
+  </html>
+  

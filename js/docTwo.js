@@ -5,9 +5,8 @@ const btn_start = document.querySelector(".btn-start");
 const btn_next = document.querySelector(".btn-next");
 const bloc_content = document.querySelector(".bloc-content");
 const audioBtn = new Audio("../audio/5DeuxBonnesReponses.wav");
-console.log(audioBtn);
 
-// btn_suivant.style.display = "none";
+
 
 bloc_content.style.display = "none";
 btn_next.style.display = "none";
@@ -117,7 +116,6 @@ function typeWriter() {
 
   const wordElement = document.getElementById("word");
   wordElement.addEventListener("click", function () {
-    console.log("Mot cliquer !");
     wordElement.classList.remove('shine');
     phraseDebut.style.display === "none";
     if (typingText.style.display === "none") {
@@ -129,8 +127,6 @@ function typeWriter() {
 
   const wordElement2 = document.getElementById("word2");
   wordElement2.addEventListener("click", function () {
-    console.log("Mot cliquer !");
-    // videoRoller.src = "../video/Chapitre1-Art-V2.mp4";
     wordElement2.classList.remove('shine');
     phraseDebut.style.display === "none";
     if (typingText2.style.display === "none") {
@@ -142,8 +138,6 @@ function typeWriter() {
 
   const wordElement3 = document.getElementById("word3");
   wordElement3.addEventListener("click", function () {
-    console.log("Mot cliquer !");
-    // videoRoller.src = "../video/Chapitre1-Art-V2.mp4";
     wordElement3.classList.remove('shine');
     phraseDebut.style.display === "none";
     if (typingText3.style.display === "none") {

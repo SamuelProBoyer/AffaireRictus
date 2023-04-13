@@ -47,18 +47,10 @@
         console.log("Je suis cliquer aussi !");
       });
 
-      btn_introLoop.addEventListener("click", () => {
-
-      });
+    
 
       
       btn_continue.addEventListener("click" , () => {
-        // video.src = "../video/Chapitre2-Loupe-Identifiez1.mp4";
-        // audio.play();
-        // setTimeout(function () {
-        //   video.src = "../video/Chapitre1-B.mp4";
-        // }, 15000);
-        // bloc_content.style.display = "none";
         btn_continue.style.display = "none";
         const audioMajeur = document.getElementById("audioMajeur");
         audioMajeur.src = "/audio/11IntroTest.wav";
@@ -182,6 +174,7 @@
             phraseDebut.innerHTML = c4;
           }
         }
+        
       // sardonique
       const wordElement = document.getElementById("word");
       if (wordElement) {

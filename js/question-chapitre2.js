@@ -34,9 +34,7 @@ btn_start.addEventListener("click", () => {
   btn_start.style.display = "none";
   btn_start.style.opacity = 0;
   btn_next.style.display = "flex";
-  // video.src = "../video/Chapitre2-A.mp4";
   video.src = "../video/Chapitre1-Positif-Negatif-Normaliser_V2.mp4";
-  // audioMajeur.volume = 0.5;
   audioMajeur.src = "../audio/6ComparaisonSourire.wav";
   audio.src = "../audio/PP_projet3_attente.mp3";
   audio.volume = 0.2;
@@ -183,8 +181,6 @@ function typeWriter() {
   // culture
   const wordElement3 = document.getElementById("word3");
   wordElement3.addEventListener("click", function () {
-    console.log("Mot cliquer !"); 
-    // videoRoller.src = "../video/Chapitre1-Art-V2.mp4";
 
     wordElement3.classList.remove("shine3");
     wordElement.classList.add("shine");
@@ -205,8 +201,6 @@ function typeWriter() {
   // science
   const wordElement4 = document.getElementById("word4");
   wordElement4.addEventListener("click", function () {
-    console.log("Mot cliquer !"); 
-    // videoRoller.src = "../video/Chapitre1-Art-V2.mp4";
 
     wordElement4.classList.remove("shine4");
     wordElement.classList.add("shine");
