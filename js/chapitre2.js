@@ -382,9 +382,12 @@ function typeWriterSecond() {
   }
   // effets
   const wordElement5 = document.getElementById("word5");
+  const audioMajeur = document.getElementById("audioMajeur");
   if (wordElement5) {
     wordElement5.addEventListener("click", function () {
       console.log("Mot cliquer !");
+      audioMajeur.src = "../audio/10Aeffets.wav";
+      audioMajeur.play();
 
       wordElement5.classList.remove("shine");
 
@@ -413,7 +416,7 @@ function typeWriterPlus5() {
   }
 }
 
-const interval5Id = setInterval(typeWriterPlus5, 70);
+const interval5Id = setInterval(typeWriterPlus5, 48);
 
 function typeWriterLoop() {
   typingText5.style.display = "none";
