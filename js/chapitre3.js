@@ -24,7 +24,7 @@
         btn_start.style.display = "none";
         btn_next.style.display = "flex";
         bloc_content.style.display = "block";
-        video.src = "../video/Chapitre3-B.mp4";
+        video.src = "../video/Histoire-0-V2.mp4";
         setTimeout(function () {
           document.querySelector(".btn-next").style.opacity = 1;
         }, 2000);

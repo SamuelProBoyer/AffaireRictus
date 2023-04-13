@@ -42,15 +42,18 @@ function writer() {
     clearInterval(interval1Id);
   }
   const wordElement = document.getElementById("word");
-  wordElement.addEventListener("click", function () {
-    console.log("Mot cliquer !");
-    majorText.style.display === "none";
-    if (typingText.style.display === "none") {
-      typingText.style.display = "block";
-      wordElement.style.color = "red";
-      wordElement.style.fontWeight = "bold";
-    }
-  });
+  if (wordElement) { 
+    wordElement.addEventListener("click", function () {
+      console.log("Mot cliquer !");
+      // video.src = "../video/Scene2-question1.mp4"; // Changement de video lors du clique
+      majorText.style.display === "none";
+      if (typingText.style.display === "none") {
+        typingText.style.display = "block";
+        wordElement.style.color = "red";
+        wordElement.style.fontWeight = "bold";
+      }
+    });
+  }
 
 }
 

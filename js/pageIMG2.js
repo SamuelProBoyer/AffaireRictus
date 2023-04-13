@@ -25,8 +25,9 @@ const wrongButtons = document.querySelectorAll(".wrong");
       video.style.display = "block";
       correctSound.play();
       setTimeout(function () {
-        video.src = "video/Chapitre2-Fin.mp4";
-        audio.pause();
+        video.src = "video/Chapitre2-Fin-V2.mp4";
+        audio.src = "/audio/PP_projet3_attente.mp3"
+        audio.play();
         audioMajeur.src = "/audio/13TestHard.wav";
         audioMajeur.play(); 
       }, 1000);

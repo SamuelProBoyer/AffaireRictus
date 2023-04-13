@@ -26,10 +26,19 @@
       href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
       rel="stylesheet"
     />
+    <!-- <link rel="stylesheet" href="css/transition.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css" />
 
     <title>Partie deux</title>
   </head>
+  <style>
+    #fil .trois {
+      font-weight: bolder;
+      color: var(--color_blue);
+    }
+
+  </style>
 
   <body>
     <div class="transition transition-1 is-active"></div>
@@ -43,6 +52,16 @@
           <header class="text-center">
             <!-- <h1>Chapitre Deux</h1> -->
           </header>
+          <div id="fil"> 
+            <span style="margin-right: 5px">Chapitres :</span> 
+            <a href="ChapiteMiseEnContexte.html" class="home"><i class="fa-solid fa-house"></i></a>
+            <span style="margin-right: 5px">-</span>
+            <a class="un" href="../index.html">1</a> 
+            <span style="margin-right: 5px;">-</span>
+            <a class="deux" href="chapitre2.html">2</a> 
+            <span style="margin-right: 5px;">-</span>
+            <a class="trois">3</a>
+          </div>
         </div>
         <footer class="text-center">
           <audio loop id="musique" src="/audio/PP_projet3_attente.mp3"></audio>
@@ -51,62 +70,7 @@
         </footer>
       </div>
       
-      <script>
-        var audioElement = document.getElementById("audioMajeur");
-        var videoElement = document.getElementById("background");
-        var musique = document.getElementById("musique");
-        musique.volume = 0.080;
-        musique.play();
-
-        var sources = [
-          "../video/Chapitre3-Histoire-2.mp4",
-          "../video/Chapitre3-Histoire-3.mp4",
-          "../video/Chapitre3-Histoire-4.mp4",
-          "../video/Chapitre3-Histoire-5.mp4",
-          "../video/Chapitre3-Histoire-6.mp4",
-          "../video/Chapitre3-Histoire-1.mp4"
-        ];
-
-        var sourcesAudio = [
-          "../audio/17TrouveSoutien.wav",
-          "../audio/18BelExemple.wav",
-          "../audio/19JackConsequence.wav",
-          "../audio/20JackDefenseur.wav",
-          "../audio/21JackDifficultes.wav",
-          "../audio/error_sound.wav"
-        ];
-
-        var currentAudioIndex = 0;
-
-        
-        audioElement.play();
-        audioElement.addEventListener("ended", function() {
-            var currentIndex = sources.indexOf(videoElement.src);
-            var nextIndex = (currentIndex + 1) % sources.length;
-            
-            if (currentAudioIndex < sourcesAudio.length) {
-              currentAudioIndex++;
-            } else {
-              currentAudioIndex = 0;
-            }
-            
-            videoElement.src = sources[currentAudioIndex -1];
-            audioElement.src = sourcesAudio[currentAudioIndex -1];
-
-            console.log(currentAudioIndex);
-            
-            videoElement.load();
-            audioElement.load();
-            videoElement.play();
-            audioElement.play();
-
-            if (currentAudioIndex === 6) {
-              window.location.assign("conclusion.html");
-            }
-        });
-
-
-      </script>
+      <script src="../js/chapitre3-histoire.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   
   </body>

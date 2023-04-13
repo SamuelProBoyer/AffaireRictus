@@ -27,6 +27,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="js/script.js"></script>
     <title>Mise en contexte</title>
@@ -34,6 +35,10 @@
   <style>
     .bloc-content {
       height: 341px;
+    }
+    #fil .home i {
+    font-weight: bolder;
+    color: var(--color_blue);
     }
   </style>
 
@@ -49,7 +54,16 @@
           <header class="text-center">
             <h1>Mise en contexte</h1>
           </header>
-
+          <div id="fil"> 
+            <span style="margin-right: 5px">Chapitres :</span> 
+            <a class="home"><i class="fa-solid fa-house"></i></a>
+            <span style="margin-right: 5px">-</span>
+            <a class="un" href="../index.html">1</a> 
+            <span style="margin-right: 5px">-</span>
+            <a class="deux" href="chapitre2.html">2</a> 
+            <span style="margin-right: 5px">-</span>
+            <a class="trois" href="chapitre3.html">3</a>
+          </div>
           <div class="col-md-12 content-text text-center">
             <div class="bloc-content">
               <p id="phraseDebut"></p>
