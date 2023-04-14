@@ -4,16 +4,34 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="../img/logo.png"/>
+    <link rel="icon" type="image/png" href="../img/logo.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <!-- Firebase module -->
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"
+    ></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"
+    ></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"
+    ></script>
 
     <title>Quiz Rictus</title>
 
@@ -152,10 +170,7 @@
         // btn_start.style.display = "flex";
         video.src = "/video/Chapitre2-Loop.mp4";
         quizElement.style.display = "flex";
-
       }, 5000);
-
-
 
       var currentQuestionIndex = 0;
       var score = 0;
@@ -166,7 +181,6 @@
       const provider = new GoogleAuthProvider();
       var auth = getAuth();
       let user;
-
 
       answersElement.style.display = "none";
       percent.style.display = "none";
@@ -314,7 +328,19 @@
         questions[4].answer,
       ];
 
-      function saveAnswer() {
+      let savingAnswers = false; // Flag to track if saveAnswer() is already in progress
+
+      async function saveAnswer() {
+        if (savingAnswers) {
+          console.log(
+            "saveAnswer() is already in progress. Skipping duplicate call."
+          );
+          return;
+        }
+
+        // Set savingAnswers flag to true to indicate that saveAnswer() is in progress
+        savingAnswers = true;
+
         if (Array.isArray(questions) && questions.length > 0) {
           var quizAnswers = [];
           for (var i = 0; i < questions.length; i++) {
@@ -335,7 +361,11 @@
         } else {
           console.log("Error: questions array is not defined or empty.");
         }
+
+        // Reset savingAnswers flag to false to indicate that saveAnswer() has completed
+        savingAnswers = false;
       }
+
       // let answer;
       // let count;
       const getColl = async () => {
