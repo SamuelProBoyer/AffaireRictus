@@ -71,12 +71,16 @@
         </div>
         <footer class="text-center">
           <audio id="audio" src="/audio/1MiseEnContexte.wav"></audio>
+          <audio id="audioMajeur" src="/audio/PP_projet3_attente.mp3"></audio>
         </footer>
       </div>
     </main>
     <script>
         var audioMaster = document.getElementById("audio");
+        var audioMajeur = document.getElementById("audioMajeur");
         audioMaster.play();
+        audioMajeur.volume = 0.2;
+        audioMajeur.play();
     </script>
     <script src="/js/docStart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
