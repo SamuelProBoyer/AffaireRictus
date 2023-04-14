@@ -279,15 +279,20 @@
       function checkAnswer(event) {
         var selectedOption = event.target.textContent;
         var currentQuestion = questions[currentQuestionIndex];
-        if (user) {
-          saveAnswer();
-        }
         if (selectedOption === currentQuestion.answer) {
+          if (user) {
+            saveAnswer();
+            console.log("answer saved");
+          }
           feedbackElement.textContent = "Bravo !";
           score++;
           nextButton.style.display = "flex";
           correctSound.play();
         } else {
+          if (user) {
+            console.log("answer saved");
+            saveAnswer();
+          }
           feedbackElement.textContent = "Et non...";
           nextButton.style.display = "flex";
           wrongSound.play();
@@ -341,7 +346,7 @@
         // Set savingAnswers flag to true to indicate that saveAnswer() is in progress
         savingAnswers = true;
 
-        if (Array.isArray(questions) && questions.length > 0) {
+        if (Array.isArray(questions) && questions.length >= 0) {
           var quizAnswers = [];
           for (var i = 0; i < questions.length; i++) {
             var quizAnswer = {
@@ -397,7 +402,7 @@
             const percent = (count / totalAnswers) * 100;
             results += `<p>Réponses : ${answer}, Pourcentage de selection: ${Number.parseFloat(
               percent
-            ).toFixed(2)}%</p>`;
+            ).toFixed(3)}%</p>`;
           }
 
           answerResultsDiv.innerHTML = results; // Update innerHTML with the calculated values
