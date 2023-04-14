@@ -101,6 +101,9 @@ p {
 .option-btn:hover {
   background-color: #dcdcdc;
 }
+.option-btn:active {
+  background-color: #dcdcdc;
+}
 
 #feedback-container {
   margin-top: 20px;
