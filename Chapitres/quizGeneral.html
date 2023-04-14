@@ -59,6 +59,12 @@
       font-weight: bolder;
       color: var(--color_blue);
     }
+    #quiz-element {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   </style>
 
   <body>
@@ -73,26 +79,27 @@
         <source src="/video/Chapitre2-Loop.mp4" type="video/webm" />
         Woops votre fureteur ne supporte pas cette vidéo.
       </video>
-      <h1 id="title">Quiz Rictus</h1>
-      <h2 id="username"></h2>
-      <button id="btn-connexion">Se connecter</button>
-      <button id="btn-connexionAlternatif">Je n'ai pas Google..</button>
-      <div id="quiz-container">
-        <div id="question-container">
-          <p id="question"></p>
-          <ul id="options">
-            <li><button class="option-btn"></button></li>
-            <li><button class="option-btn"></button></li>
-          </ul>
+      <div id="quiz-element">
+        <h1 id="title">Quiz Rictus</h1>
+        <h2 id="username"></h2>
+        <button id="btn-connexion">Se connecter</button>
+        <button id="btn-connexionAlternatif">Je n'ai pas Google..</button>
+        <div id="quiz-container">
+          <div id="question-container">
+            <p id="question"></p>
+            <ul id="options">
+              <li><button class="option-btn"></button></li>
+              <li><button class="option-btn"></button></li>
+            </ul>
+          </div>
+          <div id="feedback-container">
+            <p id="feedback"></p>
+          </div>
+          <p id="percent"></p>
+          <div id="answerResults"></div>
+          <button id="next-btn">Suivant</button>
+          <button id="sign-out-btn">Se déconnecter</button>
         </div>
-        <div id="feedback-container">
-          <p id="feedback"></p>
-        </div>
-        <p id="percent"></p>
-        <div id="answerResults"></div>
-
-        <button id="next-btn">Suivant</button>
-        <button id="sign-out-btn">Se déconnecter</button>
       </div>
       <audio id="correct-sound" src="../audio/correct_sound.mp3"></audio>
       <audio id="wrong-sound" src="../audio/error_sound.wav"></audio>
@@ -136,6 +143,7 @@
       // const database = getDatabase(app);
 
       var questionElement = document.getElementById("question");
+      var quizElement = document.getElementById("quiz-element");
       var answersElement = document.getElementById("answerResults");
       var percent = document.getElementById("percent");
       var percentBA = document.querySelector(".percentBaseAnswers");
@@ -150,8 +158,23 @@
       var scoreElement = document.getElementById("score");
       var signOutButton = document.getElementById("sign-out-btn");
       var audio = document.getElementById("audio");
+      const video = document.getElementById("background");
       audio.volume = 0.1;
       audio.play();
+      video.src = "../video/Quiz-Titre.mp4";
+      quizContainer.style.display = "none";
+      quizElement.style.display = "none";
+      answersElement.style.display = "none";
+      setTimeout(function () {
+        // document.querySelector(".btn-start").style.opacity = 1;
+
+        // btn_start.style.display = "flex";
+        video.src = "/video/Chapitre2-Loop.mp4";
+        quizElement.style.display = "flex";
+
+      }, 5000);
+
+
 
       var currentQuestionIndex = 0;
       var score = 0;
@@ -163,7 +186,7 @@
       var auth = getAuth();
       let user;
 
-      quizContainer.style.display = "none";
+
       answersElement.style.display = "none";
       percent.style.display = "none";
       btnConnexion.addEventListener("click", () => {
